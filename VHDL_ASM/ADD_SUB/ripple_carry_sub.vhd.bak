@@ -1,0 +1,53 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+
+-- Dichiarazione delle porte di ingresso e di uscita del ripple carry adder/subtractor ( 4 bit ).
+
+ENTITY ripple_carry_sub IS
+
+   PORT (  x_in: IN SIGNED(3 DOWNTO 0);
+           y_in : IN SIGNED(3 DOWNTO 0);
+			  SUB : IN STD_LOGIC;              -- Tale ingresso non è altro che il carry in del primo full adder, se SUB = '1' 
+			  s_out : OUT SIGNED(3 DOWNTO 0);  -- si effettua la sottrazione, altrimenti si effettua la somma.
+			  c_out, y_out : OUT STD_LOGIC     -- Necessità di stanziare un segnale di uscita "y_out", possiamo quindi calcolare l'overflow 
+			 );                                -- utilizzando il nuovo valore di y.
+			 
+END ripple_carry_sub;
+
+-- Architettura del ripple carry. 
+ARCHITECTURE behavior OF ripple_carry_sub IS 
+
+-- richiamo il componente "fulladder".
+ COMPONENT fulladder 
+   
+	PORT(a, b, cin: IN STD_LOGIC; 
+    f, cout: OUT STD_LOGIC);
+	 
+ END COMPONENT;
+ 
+ -- Dichiarazione dei segnali.
+ 
+ SIGNAL cout0, cout1, cout2 : STD_LOGIC;          -- carry in uscita di ciascun full adder.
+ SIGNAL y_sub_std : STD_LOGIC_VECTOR(3 DOWNTO 0); -- segnale di supporto per operazioni logiche.
+ SIGNAL y_sub : SIGNED(3 DOWNTO 0);               -- segnale finale di y, in ingresso di ciascun full adder.
+ 
+ BEGIN
+ 
+ -- operazione logiche : svolgono il complemento  1 di y ( se SUB = '1') , a tale segnale si aggiunge il carry in = SUB, così da ottenere il complemento 2.
+ y_sub_std(0) <= SUB XOR STD_LOGIC(y_in(0));
+ y_sub_std(1) <= SUB XOR STD_LOGIC(y_in(1));
+ y_sub_std(2) <= SUB XOR STD_LOGIC(y_in(2));
+ y_sub_std(3) <= SUB XOR STD_LOGIC(y_in(3));
+ y_out <= y_sub_std(3);
+ 
+ y_sub <= SIGNED(y_sub_std);
+ 
+ fu0: fulladder PORT MAP( a => x_in(0), b => y_sub(0), cin => SUB, f => s_out(0), cout => cout0 );
+ fu1: fulladder PORT MAP( a => x_in(1), b => y_sub(1), cin => cout0, f => s_out(1), cout => cout1 );
+ fu2: fulladder PORT MAP( a => x_in(2), b => y_sub(2), cin => cout1, f => s_out(2), cout => cout2 );
+ fu3: fulladder PORT MAP( a => x_in(3), b => y_sub(3), cin => cout2, f => s_out(3), cout => c_out );
+
+ 
+ END ARCHITECTURE;
+ 

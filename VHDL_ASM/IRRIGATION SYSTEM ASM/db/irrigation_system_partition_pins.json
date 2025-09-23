@@ -1,0 +1,157 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "done_sig",
+					"strict" : false
+				},
+				{
+					"name" : "irr_alarm",
+					"strict" : false
+				},
+				{
+					"name" : "data_out_MEMB[0]",
+					"strict" : false
+				},
+				{
+					"name" : "data_out_MEMB[1]",
+					"strict" : false
+				},
+				{
+					"name" : "data_out_MEMB[2]",
+					"strict" : false
+				},
+				{
+					"name" : "data_out_MEMB[3]",
+					"strict" : false
+				},
+				{
+					"name" : "data_out_MEMB[4]",
+					"strict" : false
+				},
+				{
+					"name" : "data_out_MEMB[5]",
+					"strict" : false
+				},
+				{
+					"name" : "data_out_MEMB[6]",
+					"strict" : false
+				},
+				{
+					"name" : "data_out_MEMB[7]",
+					"strict" : false
+				},
+				{
+					"name" : "clock_asm",
+					"strict" : false
+				},
+				{
+					"name" : "start",
+					"strict" : false
+				},
+				{
+					"name" : "reset_asm",
+					"strict" : false
+				},
+				{
+					"name" : "threshold[14]",
+					"strict" : false
+				},
+				{
+					"name" : "threshold[13]",
+					"strict" : false
+				},
+				{
+					"name" : "threshold[12]",
+					"strict" : false
+				},
+				{
+					"name" : "threshold[11]",
+					"strict" : false
+				},
+				{
+					"name" : "threshold[10]",
+					"strict" : false
+				},
+				{
+					"name" : "threshold[9]",
+					"strict" : false
+				},
+				{
+					"name" : "threshold[8]",
+					"strict" : false
+				},
+				{
+					"name" : "threshold[7]",
+					"strict" : false
+				},
+				{
+					"name" : "threshold[6]",
+					"strict" : false
+				},
+				{
+					"name" : "threshold[5]",
+					"strict" : false
+				},
+				{
+					"name" : "threshold[4]",
+					"strict" : false
+				},
+				{
+					"name" : "threshold[3]",
+					"strict" : false
+				},
+				{
+					"name" : "threshold[2]",
+					"strict" : false
+				},
+				{
+					"name" : "threshold[1]",
+					"strict" : false
+				},
+				{
+					"name" : "threshold[0]",
+					"strict" : false
+				},
+				{
+					"name" : "threshold[15]",
+					"strict" : false
+				},
+				{
+					"name" : "data_ext[6]",
+					"strict" : false
+				},
+				{
+					"name" : "data_ext[5]",
+					"strict" : false
+				},
+				{
+					"name" : "data_ext[4]",
+					"strict" : false
+				},
+				{
+					"name" : "data_ext[3]",
+					"strict" : false
+				},
+				{
+					"name" : "data_ext[2]",
+					"strict" : false
+				},
+				{
+					"name" : "data_ext[1]",
+					"strict" : false
+				},
+				{
+					"name" : "data_ext[0]",
+					"strict" : false
+				},
+				{
+					"name" : "data_ext[7]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

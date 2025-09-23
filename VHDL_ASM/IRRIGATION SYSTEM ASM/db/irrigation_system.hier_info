@@ -1,0 +1,2685 @@
+|irrigation_system
+clock_asm => count_1:count1.clock
+clock_asm => count_1:count2.clock
+clock_asm => flag_counter:counter_flag.clock
+clock_asm => register_file:MEM_A.clock
+clock_asm => register_file:MEM_B.clock
+clock_asm => regn_8bit:reg1.Clock
+clock_asm => regn_8bit:reg2.Clock
+clock_asm => regn_8bit:reg3.Clock
+clock_asm => regn_8bit:reg4.Clock
+clock_asm => regn_16bit:reg40.Clock
+clock_asm => regn_16bit:reg20.Clock
+clock_asm => regn_16bit:regThr.Clock
+clock_asm => regn_16bit:regAvr.Clock
+clock_asm => regn_16bit:regHigh.Clock
+clock_asm => state~1.DATAIN
+reset_asm => state.OUTPUTSELECT
+reset_asm => state.OUTPUTSELECT
+reset_asm => state.OUTPUTSELECT
+reset_asm => state.OUTPUTSELECT
+reset_asm => state.OUTPUTSELECT
+reset_asm => state.OUTPUTSELECT
+reset_asm => state.OUTPUTSELECT
+reset_asm => state.OUTPUTSELECT
+reset_asm => state.OUTPUTSELECT
+reset_asm => state.OUTPUTSELECT
+reset_asm => state.OUTPUTSELECT
+reset_asm => state.OUTPUTSELECT
+reset_asm => state.OUTPUTSELECT
+reset_asm => state.OUTPUTSELECT
+reset_asm => state.OUTPUTSELECT
+reset_asm => state.OUTPUTSELECT
+reset_asm => state.OUTPUTSELECT
+reset_asm => state.OUTPUTSELECT
+reset_asm => state.OUTPUTSELECT
+reset_asm => regn_16bit:regThr.Reset
+start => Selector1.IN3
+start => Selector4.IN2
+start => Selector0.IN1
+done_sig <= done_sig.DB_MAX_OUTPUT_PORT_TYPE
+irr_alarm << irr_alarm.DB_MAX_OUTPUT_PORT_TYPE
+threshold[0] => regn_16bit:regThr.R[0]
+threshold[1] => regn_16bit:regThr.R[1]
+threshold[2] => regn_16bit:regThr.R[2]
+threshold[3] => regn_16bit:regThr.R[3]
+threshold[4] => regn_16bit:regThr.R[4]
+threshold[5] => regn_16bit:regThr.R[5]
+threshold[6] => regn_16bit:regThr.R[6]
+threshold[7] => regn_16bit:regThr.R[7]
+threshold[8] => regn_16bit:regThr.R[8]
+threshold[9] => regn_16bit:regThr.R[9]
+threshold[10] => regn_16bit:regThr.R[10]
+threshold[11] => regn_16bit:regThr.R[11]
+threshold[12] => regn_16bit:regThr.R[12]
+threshold[13] => regn_16bit:regThr.R[13]
+threshold[14] => regn_16bit:regThr.R[14]
+threshold[15] => regn_16bit:regThr.R[15]
+data_ext[0] => register_file:MEM_A.data_in[0]
+data_ext[1] => register_file:MEM_A.data_in[1]
+data_ext[2] => register_file:MEM_A.data_in[2]
+data_ext[3] => register_file:MEM_A.data_in[3]
+data_ext[4] => register_file:MEM_A.data_in[4]
+data_ext[5] => register_file:MEM_A.data_in[5]
+data_ext[6] => register_file:MEM_A.data_in[6]
+data_ext[7] => register_file:MEM_A.data_in[7]
+data_out_MEMB[0] <= register_file:MEM_B.data_out[0]
+data_out_MEMB[1] <= register_file:MEM_B.data_out[1]
+data_out_MEMB[2] <= register_file:MEM_B.data_out[2]
+data_out_MEMB[3] <= register_file:MEM_B.data_out[3]
+data_out_MEMB[4] <= register_file:MEM_B.data_out[4]
+data_out_MEMB[5] <= register_file:MEM_B.data_out[5]
+data_out_MEMB[6] <= register_file:MEM_B.data_out[6]
+data_out_MEMB[7] <= register_file:MEM_B.data_out[7]
+
+
+|irrigation_system|count_1:count1
+enb => and_link[0].IN1
+enb => t_flipflop:tf1.T
+clock => t_flipflop:tf1.clk
+clock => t_flipflop:G:1:tf.clk
+clock => t_flipflop:G:2:tf.clk
+clock => t_flipflop:G:3:tf.clk
+clock => t_flipflop:G:4:tf.clk
+clock => t_flipflop:G:5:tf.clk
+clock => t_flipflop:G:6:tf.clk
+clock => t_flipflop:G:7:tf.clk
+clock => t_flipflop:G:8:tf.clk
+clock => t_flipflop:tf_last.clk
+reset_c => t_flipflop:tf1.reset
+reset_c => t_flipflop:G:1:tf.reset
+reset_c => t_flipflop:G:2:tf.reset
+reset_c => t_flipflop:G:3:tf.reset
+reset_c => t_flipflop:G:4:tf.reset
+reset_c => t_flipflop:G:5:tf.reset
+reset_c => t_flipflop:G:6:tf.reset
+reset_c => t_flipflop:G:7:tf.reset
+reset_c => t_flipflop:G:8:tf.reset
+reset_c => t_flipflop:tf_last.reset
+Qs[0] <= t_flipflop:tf1.Q
+Qs[1] <= t_flipflop:G:1:tf.Q
+Qs[2] <= t_flipflop:G:2:tf.Q
+Qs[3] <= t_flipflop:G:3:tf.Q
+Qs[4] <= t_flipflop:G:4:tf.Q
+Qs[5] <= t_flipflop:G:5:tf.Q
+Qs[6] <= t_flipflop:G:6:tf.Q
+Qs[7] <= t_flipflop:G:7:tf.Q
+Qs[8] <= t_flipflop:G:8:tf.Q
+Qs[9] <= t_flipflop:tf_last.Q
+
+
+|irrigation_system|count_1:count1|t_flipflop:tf1
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count1|t_flipflop:\G:1:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count1|t_flipflop:\G:2:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count1|t_flipflop:\G:3:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count1|t_flipflop:\G:4:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count1|t_flipflop:\G:5:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count1|t_flipflop:\G:6:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count1|t_flipflop:\G:7:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count1|t_flipflop:\G:8:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count1|t_flipflop:tf_last
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count2
+enb => and_link[0].IN1
+enb => t_flipflop:tf1.T
+clock => t_flipflop:tf1.clk
+clock => t_flipflop:G:1:tf.clk
+clock => t_flipflop:G:2:tf.clk
+clock => t_flipflop:G:3:tf.clk
+clock => t_flipflop:G:4:tf.clk
+clock => t_flipflop:G:5:tf.clk
+clock => t_flipflop:G:6:tf.clk
+clock => t_flipflop:G:7:tf.clk
+clock => t_flipflop:G:8:tf.clk
+clock => t_flipflop:tf_last.clk
+reset_c => t_flipflop:tf1.reset
+reset_c => t_flipflop:G:1:tf.reset
+reset_c => t_flipflop:G:2:tf.reset
+reset_c => t_flipflop:G:3:tf.reset
+reset_c => t_flipflop:G:4:tf.reset
+reset_c => t_flipflop:G:5:tf.reset
+reset_c => t_flipflop:G:6:tf.reset
+reset_c => t_flipflop:G:7:tf.reset
+reset_c => t_flipflop:G:8:tf.reset
+reset_c => t_flipflop:tf_last.reset
+Qs[0] <= t_flipflop:tf1.Q
+Qs[1] <= t_flipflop:G:1:tf.Q
+Qs[2] <= t_flipflop:G:2:tf.Q
+Qs[3] <= t_flipflop:G:3:tf.Q
+Qs[4] <= t_flipflop:G:4:tf.Q
+Qs[5] <= t_flipflop:G:5:tf.Q
+Qs[6] <= t_flipflop:G:6:tf.Q
+Qs[7] <= t_flipflop:G:7:tf.Q
+Qs[8] <= t_flipflop:G:8:tf.Q
+Qs[9] <= t_flipflop:tf_last.Q
+
+
+|irrigation_system|count_1:count2|t_flipflop:tf1
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count2|t_flipflop:\G:1:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count2|t_flipflop:\G:2:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count2|t_flipflop:\G:3:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count2|t_flipflop:\G:4:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count2|t_flipflop:\G:5:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count2|t_flipflop:\G:6:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count2|t_flipflop:\G:7:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count2|t_flipflop:\G:8:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|count_1:count2|t_flipflop:tf_last
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|flag_counter:counter_flag
+enb => and_link[0].IN1
+enb => t_flipflop:tf1.T
+clock => t_flipflop:tf1.clk
+clock => t_flipflop:G:1:tf.clk
+clock => t_flipflop:G:2:tf.clk
+clock => t_flipflop:tf_last.clk
+reset_c => t_flipflop:tf1.reset
+reset_c => t_flipflop:G:1:tf.reset
+reset_c => t_flipflop:G:2:tf.reset
+reset_c => t_flipflop:tf_last.reset
+Qs[0] <= t_flipflop:tf1.Q
+Qs[1] <= t_flipflop:G:1:tf.Q
+Qs[2] <= t_flipflop:G:2:tf.Q
+Qs[3] <= t_flipflop:tf_last.Q
+
+
+|irrigation_system|flag_counter:counter_flag|t_flipflop:tf1
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|flag_counter:counter_flag|t_flipflop:\G:1:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|flag_counter:counter_flag|t_flipflop:\G:2:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|flag_counter:counter_flag|t_flipflop:tf_last
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|register_file:MEM_A
+data_in[0] => reg_file~17.DATAIN
+data_in[0] => reg_file.DATAIN
+data_in[1] => reg_file~16.DATAIN
+data_in[1] => reg_file.DATAIN1
+data_in[2] => reg_file~15.DATAIN
+data_in[2] => reg_file.DATAIN2
+data_in[3] => reg_file~14.DATAIN
+data_in[3] => reg_file.DATAIN3
+data_in[4] => reg_file~13.DATAIN
+data_in[4] => reg_file.DATAIN4
+data_in[5] => reg_file~12.DATAIN
+data_in[5] => reg_file.DATAIN5
+data_in[6] => reg_file~11.DATAIN
+data_in[6] => reg_file.DATAIN6
+data_in[7] => reg_file~10.DATAIN
+data_in[7] => reg_file.DATAIN7
+address[0] => reg_file~9.DATAIN
+address[0] => reg_file.WADDR
+address[0] => reg_file.RADDR
+address[1] => reg_file~8.DATAIN
+address[1] => reg_file.WADDR1
+address[1] => reg_file.RADDR1
+address[2] => reg_file~7.DATAIN
+address[2] => reg_file.WADDR2
+address[2] => reg_file.RADDR2
+address[3] => reg_file~6.DATAIN
+address[3] => reg_file.WADDR3
+address[3] => reg_file.RADDR3
+address[4] => reg_file~5.DATAIN
+address[4] => reg_file.WADDR4
+address[4] => reg_file.RADDR4
+address[5] => reg_file~4.DATAIN
+address[5] => reg_file.WADDR5
+address[5] => reg_file.RADDR5
+address[6] => reg_file~3.DATAIN
+address[6] => reg_file.WADDR6
+address[6] => reg_file.RADDR6
+address[7] => reg_file~2.DATAIN
+address[7] => reg_file.WADDR7
+address[7] => reg_file.RADDR7
+address[8] => reg_file~1.DATAIN
+address[8] => reg_file.WADDR8
+address[8] => reg_file.RADDR8
+address[9] => reg_file~0.DATAIN
+address[9] => reg_file.WADDR9
+address[9] => reg_file.RADDR9
+cs => reg_file.OUTPUTSELECT
+wr_n => reg_file.DATAB
+rd => ~NO_FANOUT~
+clock => reg_file~18.CLK
+clock => reg_file~0.CLK
+clock => reg_file~1.CLK
+clock => reg_file~2.CLK
+clock => reg_file~3.CLK
+clock => reg_file~4.CLK
+clock => reg_file~5.CLK
+clock => reg_file~6.CLK
+clock => reg_file~7.CLK
+clock => reg_file~8.CLK
+clock => reg_file~9.CLK
+clock => reg_file~10.CLK
+clock => reg_file~11.CLK
+clock => reg_file~12.CLK
+clock => reg_file~13.CLK
+clock => reg_file~14.CLK
+clock => reg_file~15.CLK
+clock => reg_file~16.CLK
+clock => reg_file~17.CLK
+clock => reg_file.CLK0
+data_out[0] <= reg_file.DATAOUT
+data_out[1] <= reg_file.DATAOUT1
+data_out[2] <= reg_file.DATAOUT2
+data_out[3] <= reg_file.DATAOUT3
+data_out[4] <= reg_file.DATAOUT4
+data_out[5] <= reg_file.DATAOUT5
+data_out[6] <= reg_file.DATAOUT6
+data_out[7] <= reg_file.DATAOUT7
+
+
+|irrigation_system|register_file:MEM_B
+data_in[0] => reg_file~17.DATAIN
+data_in[0] => reg_file.DATAIN
+data_in[1] => reg_file~16.DATAIN
+data_in[1] => reg_file.DATAIN1
+data_in[2] => reg_file~15.DATAIN
+data_in[2] => reg_file.DATAIN2
+data_in[3] => reg_file~14.DATAIN
+data_in[3] => reg_file.DATAIN3
+data_in[4] => reg_file~13.DATAIN
+data_in[4] => reg_file.DATAIN4
+data_in[5] => reg_file~12.DATAIN
+data_in[5] => reg_file.DATAIN5
+data_in[6] => reg_file~11.DATAIN
+data_in[6] => reg_file.DATAIN6
+data_in[7] => reg_file~10.DATAIN
+data_in[7] => reg_file.DATAIN7
+address[0] => reg_file~9.DATAIN
+address[0] => reg_file.WADDR
+address[0] => reg_file.RADDR
+address[1] => reg_file~8.DATAIN
+address[1] => reg_file.WADDR1
+address[1] => reg_file.RADDR1
+address[2] => reg_file~7.DATAIN
+address[2] => reg_file.WADDR2
+address[2] => reg_file.RADDR2
+address[3] => reg_file~6.DATAIN
+address[3] => reg_file.WADDR3
+address[3] => reg_file.RADDR3
+address[4] => reg_file~5.DATAIN
+address[4] => reg_file.WADDR4
+address[4] => reg_file.RADDR4
+address[5] => reg_file~4.DATAIN
+address[5] => reg_file.WADDR5
+address[5] => reg_file.RADDR5
+address[6] => reg_file~3.DATAIN
+address[6] => reg_file.WADDR6
+address[6] => reg_file.RADDR6
+address[7] => reg_file~2.DATAIN
+address[7] => reg_file.WADDR7
+address[7] => reg_file.RADDR7
+address[8] => reg_file~1.DATAIN
+address[8] => reg_file.WADDR8
+address[8] => reg_file.RADDR8
+address[9] => reg_file~0.DATAIN
+address[9] => reg_file.WADDR9
+address[9] => reg_file.RADDR9
+cs => reg_file.OUTPUTSELECT
+wr_n => reg_file.DATAB
+rd => ~NO_FANOUT~
+clock => reg_file~18.CLK
+clock => reg_file~0.CLK
+clock => reg_file~1.CLK
+clock => reg_file~2.CLK
+clock => reg_file~3.CLK
+clock => reg_file~4.CLK
+clock => reg_file~5.CLK
+clock => reg_file~6.CLK
+clock => reg_file~7.CLK
+clock => reg_file~8.CLK
+clock => reg_file~9.CLK
+clock => reg_file~10.CLK
+clock => reg_file~11.CLK
+clock => reg_file~12.CLK
+clock => reg_file~13.CLK
+clock => reg_file~14.CLK
+clock => reg_file~15.CLK
+clock => reg_file~16.CLK
+clock => reg_file~17.CLK
+clock => reg_file.CLK0
+data_out[0] <= reg_file.DATAOUT
+data_out[1] <= reg_file.DATAOUT1
+data_out[2] <= reg_file.DATAOUT2
+data_out[3] <= reg_file.DATAOUT3
+data_out[4] <= reg_file.DATAOUT4
+data_out[5] <= reg_file.DATAOUT5
+data_out[6] <= reg_file.DATAOUT6
+data_out[7] <= reg_file.DATAOUT7
+
+
+|irrigation_system|regn_8bit:reg1
+R[0] => Q[0]~reg0.DATAIN
+R[1] => Q[1]~reg0.DATAIN
+R[2] => Q[2]~reg0.DATAIN
+R[3] => Q[3]~reg0.DATAIN
+R[4] => Q[4]~reg0.DATAIN
+R[5] => Q[5]~reg0.DATAIN
+R[6] => Q[6]~reg0.DATAIN
+R[7] => Q[7]~reg0.DATAIN
+Clock => Q[0]~reg0.CLK
+Clock => Q[1]~reg0.CLK
+Clock => Q[2]~reg0.CLK
+Clock => Q[3]~reg0.CLK
+Clock => Q[4]~reg0.CLK
+Clock => Q[5]~reg0.CLK
+Clock => Q[6]~reg0.CLK
+Clock => Q[7]~reg0.CLK
+Reset => Q[0]~reg0.ACLR
+Reset => Q[1]~reg0.ACLR
+Reset => Q[2]~reg0.ACLR
+Reset => Q[3]~reg0.ACLR
+Reset => Q[4]~reg0.ACLR
+Reset => Q[5]~reg0.ACLR
+Reset => Q[6]~reg0.ACLR
+Reset => Q[7]~reg0.ACLR
+enable => Q[7]~reg0.ENA
+enable => Q[6]~reg0.ENA
+enable => Q[5]~reg0.ENA
+enable => Q[4]~reg0.ENA
+enable => Q[3]~reg0.ENA
+enable => Q[2]~reg0.ENA
+enable => Q[1]~reg0.ENA
+enable => Q[0]~reg0.ENA
+Q[0] <= Q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[4] <= Q[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[5] <= Q[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[6] <= Q[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[7] <= Q[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|regn_8bit:reg2
+R[0] => Q[0]~reg0.DATAIN
+R[1] => Q[1]~reg0.DATAIN
+R[2] => Q[2]~reg0.DATAIN
+R[3] => Q[3]~reg0.DATAIN
+R[4] => Q[4]~reg0.DATAIN
+R[5] => Q[5]~reg0.DATAIN
+R[6] => Q[6]~reg0.DATAIN
+R[7] => Q[7]~reg0.DATAIN
+Clock => Q[0]~reg0.CLK
+Clock => Q[1]~reg0.CLK
+Clock => Q[2]~reg0.CLK
+Clock => Q[3]~reg0.CLK
+Clock => Q[4]~reg0.CLK
+Clock => Q[5]~reg0.CLK
+Clock => Q[6]~reg0.CLK
+Clock => Q[7]~reg0.CLK
+Reset => Q[0]~reg0.ACLR
+Reset => Q[1]~reg0.ACLR
+Reset => Q[2]~reg0.ACLR
+Reset => Q[3]~reg0.ACLR
+Reset => Q[4]~reg0.ACLR
+Reset => Q[5]~reg0.ACLR
+Reset => Q[6]~reg0.ACLR
+Reset => Q[7]~reg0.ACLR
+enable => Q[7]~reg0.ENA
+enable => Q[6]~reg0.ENA
+enable => Q[5]~reg0.ENA
+enable => Q[4]~reg0.ENA
+enable => Q[3]~reg0.ENA
+enable => Q[2]~reg0.ENA
+enable => Q[1]~reg0.ENA
+enable => Q[0]~reg0.ENA
+Q[0] <= Q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[4] <= Q[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[5] <= Q[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[6] <= Q[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[7] <= Q[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|regn_8bit:reg3
+R[0] => Q[0]~reg0.DATAIN
+R[1] => Q[1]~reg0.DATAIN
+R[2] => Q[2]~reg0.DATAIN
+R[3] => Q[3]~reg0.DATAIN
+R[4] => Q[4]~reg0.DATAIN
+R[5] => Q[5]~reg0.DATAIN
+R[6] => Q[6]~reg0.DATAIN
+R[7] => Q[7]~reg0.DATAIN
+Clock => Q[0]~reg0.CLK
+Clock => Q[1]~reg0.CLK
+Clock => Q[2]~reg0.CLK
+Clock => Q[3]~reg0.CLK
+Clock => Q[4]~reg0.CLK
+Clock => Q[5]~reg0.CLK
+Clock => Q[6]~reg0.CLK
+Clock => Q[7]~reg0.CLK
+Reset => Q[0]~reg0.ACLR
+Reset => Q[1]~reg0.ACLR
+Reset => Q[2]~reg0.ACLR
+Reset => Q[3]~reg0.ACLR
+Reset => Q[4]~reg0.ACLR
+Reset => Q[5]~reg0.ACLR
+Reset => Q[6]~reg0.ACLR
+Reset => Q[7]~reg0.ACLR
+enable => Q[7]~reg0.ENA
+enable => Q[6]~reg0.ENA
+enable => Q[5]~reg0.ENA
+enable => Q[4]~reg0.ENA
+enable => Q[3]~reg0.ENA
+enable => Q[2]~reg0.ENA
+enable => Q[1]~reg0.ENA
+enable => Q[0]~reg0.ENA
+Q[0] <= Q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[4] <= Q[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[5] <= Q[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[6] <= Q[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[7] <= Q[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|regn_8bit:reg4
+R[0] => Q[0]~reg0.DATAIN
+R[1] => Q[1]~reg0.DATAIN
+R[2] => Q[2]~reg0.DATAIN
+R[3] => Q[3]~reg0.DATAIN
+R[4] => Q[4]~reg0.DATAIN
+R[5] => Q[5]~reg0.DATAIN
+R[6] => Q[6]~reg0.DATAIN
+R[7] => Q[7]~reg0.DATAIN
+Clock => Q[0]~reg0.CLK
+Clock => Q[1]~reg0.CLK
+Clock => Q[2]~reg0.CLK
+Clock => Q[3]~reg0.CLK
+Clock => Q[4]~reg0.CLK
+Clock => Q[5]~reg0.CLK
+Clock => Q[6]~reg0.CLK
+Clock => Q[7]~reg0.CLK
+Reset => Q[0]~reg0.ACLR
+Reset => Q[1]~reg0.ACLR
+Reset => Q[2]~reg0.ACLR
+Reset => Q[3]~reg0.ACLR
+Reset => Q[4]~reg0.ACLR
+Reset => Q[5]~reg0.ACLR
+Reset => Q[6]~reg0.ACLR
+Reset => Q[7]~reg0.ACLR
+enable => Q[7]~reg0.ENA
+enable => Q[6]~reg0.ENA
+enable => Q[5]~reg0.ENA
+enable => Q[4]~reg0.ENA
+enable => Q[3]~reg0.ENA
+enable => Q[2]~reg0.ENA
+enable => Q[1]~reg0.ENA
+enable => Q[0]~reg0.ENA
+Q[0] <= Q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[4] <= Q[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[5] <= Q[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[6] <= Q[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[7] <= Q[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|regn_16bit:reg40
+R[0] => Q[0]~reg0.DATAIN
+R[1] => Q[1]~reg0.DATAIN
+R[2] => Q[2]~reg0.DATAIN
+R[3] => Q[3]~reg0.DATAIN
+R[4] => Q[4]~reg0.DATAIN
+R[5] => Q[5]~reg0.DATAIN
+R[6] => Q[6]~reg0.DATAIN
+R[7] => Q[7]~reg0.DATAIN
+R[8] => Q[8]~reg0.DATAIN
+R[9] => Q[9]~reg0.DATAIN
+R[10] => Q[10]~reg0.DATAIN
+R[11] => Q[11]~reg0.DATAIN
+R[12] => Q[12]~reg0.DATAIN
+R[13] => Q[13]~reg0.DATAIN
+R[14] => Q[14]~reg0.DATAIN
+R[15] => Q[15]~reg0.DATAIN
+Clock => Q[0]~reg0.CLK
+Clock => Q[1]~reg0.CLK
+Clock => Q[2]~reg0.CLK
+Clock => Q[3]~reg0.CLK
+Clock => Q[4]~reg0.CLK
+Clock => Q[5]~reg0.CLK
+Clock => Q[6]~reg0.CLK
+Clock => Q[7]~reg0.CLK
+Clock => Q[8]~reg0.CLK
+Clock => Q[9]~reg0.CLK
+Clock => Q[10]~reg0.CLK
+Clock => Q[11]~reg0.CLK
+Clock => Q[12]~reg0.CLK
+Clock => Q[13]~reg0.CLK
+Clock => Q[14]~reg0.CLK
+Clock => Q[15]~reg0.CLK
+Reset => Q[0]~reg0.ACLR
+Reset => Q[1]~reg0.ACLR
+Reset => Q[2]~reg0.ACLR
+Reset => Q[3]~reg0.ACLR
+Reset => Q[4]~reg0.ACLR
+Reset => Q[5]~reg0.ACLR
+Reset => Q[6]~reg0.ACLR
+Reset => Q[7]~reg0.ACLR
+Reset => Q[8]~reg0.ACLR
+Reset => Q[9]~reg0.ACLR
+Reset => Q[10]~reg0.ACLR
+Reset => Q[11]~reg0.ACLR
+Reset => Q[12]~reg0.ACLR
+Reset => Q[13]~reg0.ACLR
+Reset => Q[14]~reg0.ACLR
+Reset => Q[15]~reg0.ACLR
+enable => Q[15]~reg0.ENA
+enable => Q[14]~reg0.ENA
+enable => Q[13]~reg0.ENA
+enable => Q[12]~reg0.ENA
+enable => Q[11]~reg0.ENA
+enable => Q[10]~reg0.ENA
+enable => Q[9]~reg0.ENA
+enable => Q[8]~reg0.ENA
+enable => Q[7]~reg0.ENA
+enable => Q[6]~reg0.ENA
+enable => Q[5]~reg0.ENA
+enable => Q[4]~reg0.ENA
+enable => Q[3]~reg0.ENA
+enable => Q[2]~reg0.ENA
+enable => Q[1]~reg0.ENA
+enable => Q[0]~reg0.ENA
+Q[0] <= Q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[4] <= Q[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[5] <= Q[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[6] <= Q[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[7] <= Q[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[8] <= Q[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[9] <= Q[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[10] <= Q[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[11] <= Q[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[12] <= Q[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[13] <= Q[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[14] <= Q[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[15] <= Q[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|regn_16bit:reg20
+R[0] => Q[0]~reg0.DATAIN
+R[1] => Q[1]~reg0.DATAIN
+R[2] => Q[2]~reg0.DATAIN
+R[3] => Q[3]~reg0.DATAIN
+R[4] => Q[4]~reg0.DATAIN
+R[5] => Q[5]~reg0.DATAIN
+R[6] => Q[6]~reg0.DATAIN
+R[7] => Q[7]~reg0.DATAIN
+R[8] => Q[8]~reg0.DATAIN
+R[9] => Q[9]~reg0.DATAIN
+R[10] => Q[10]~reg0.DATAIN
+R[11] => Q[11]~reg0.DATAIN
+R[12] => Q[12]~reg0.DATAIN
+R[13] => Q[13]~reg0.DATAIN
+R[14] => Q[14]~reg0.DATAIN
+R[15] => Q[15]~reg0.DATAIN
+Clock => Q[0]~reg0.CLK
+Clock => Q[1]~reg0.CLK
+Clock => Q[2]~reg0.CLK
+Clock => Q[3]~reg0.CLK
+Clock => Q[4]~reg0.CLK
+Clock => Q[5]~reg0.CLK
+Clock => Q[6]~reg0.CLK
+Clock => Q[7]~reg0.CLK
+Clock => Q[8]~reg0.CLK
+Clock => Q[9]~reg0.CLK
+Clock => Q[10]~reg0.CLK
+Clock => Q[11]~reg0.CLK
+Clock => Q[12]~reg0.CLK
+Clock => Q[13]~reg0.CLK
+Clock => Q[14]~reg0.CLK
+Clock => Q[15]~reg0.CLK
+Reset => Q[0]~reg0.ACLR
+Reset => Q[1]~reg0.ACLR
+Reset => Q[2]~reg0.ACLR
+Reset => Q[3]~reg0.ACLR
+Reset => Q[4]~reg0.ACLR
+Reset => Q[5]~reg0.ACLR
+Reset => Q[6]~reg0.ACLR
+Reset => Q[7]~reg0.ACLR
+Reset => Q[8]~reg0.ACLR
+Reset => Q[9]~reg0.ACLR
+Reset => Q[10]~reg0.ACLR
+Reset => Q[11]~reg0.ACLR
+Reset => Q[12]~reg0.ACLR
+Reset => Q[13]~reg0.ACLR
+Reset => Q[14]~reg0.ACLR
+Reset => Q[15]~reg0.ACLR
+enable => Q[15]~reg0.ENA
+enable => Q[14]~reg0.ENA
+enable => Q[13]~reg0.ENA
+enable => Q[12]~reg0.ENA
+enable => Q[11]~reg0.ENA
+enable => Q[10]~reg0.ENA
+enable => Q[9]~reg0.ENA
+enable => Q[8]~reg0.ENA
+enable => Q[7]~reg0.ENA
+enable => Q[6]~reg0.ENA
+enable => Q[5]~reg0.ENA
+enable => Q[4]~reg0.ENA
+enable => Q[3]~reg0.ENA
+enable => Q[2]~reg0.ENA
+enable => Q[1]~reg0.ENA
+enable => Q[0]~reg0.ENA
+Q[0] <= Q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[4] <= Q[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[5] <= Q[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[6] <= Q[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[7] <= Q[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[8] <= Q[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[9] <= Q[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[10] <= Q[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[11] <= Q[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[12] <= Q[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[13] <= Q[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[14] <= Q[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[15] <= Q[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|regn_16bit:regThr
+R[0] => Q[0]~reg0.DATAIN
+R[1] => Q[1]~reg0.DATAIN
+R[2] => Q[2]~reg0.DATAIN
+R[3] => Q[3]~reg0.DATAIN
+R[4] => Q[4]~reg0.DATAIN
+R[5] => Q[5]~reg0.DATAIN
+R[6] => Q[6]~reg0.DATAIN
+R[7] => Q[7]~reg0.DATAIN
+R[8] => Q[8]~reg0.DATAIN
+R[9] => Q[9]~reg0.DATAIN
+R[10] => Q[10]~reg0.DATAIN
+R[11] => Q[11]~reg0.DATAIN
+R[12] => Q[12]~reg0.DATAIN
+R[13] => Q[13]~reg0.DATAIN
+R[14] => Q[14]~reg0.DATAIN
+R[15] => Q[15]~reg0.DATAIN
+Clock => Q[0]~reg0.CLK
+Clock => Q[1]~reg0.CLK
+Clock => Q[2]~reg0.CLK
+Clock => Q[3]~reg0.CLK
+Clock => Q[4]~reg0.CLK
+Clock => Q[5]~reg0.CLK
+Clock => Q[6]~reg0.CLK
+Clock => Q[7]~reg0.CLK
+Clock => Q[8]~reg0.CLK
+Clock => Q[9]~reg0.CLK
+Clock => Q[10]~reg0.CLK
+Clock => Q[11]~reg0.CLK
+Clock => Q[12]~reg0.CLK
+Clock => Q[13]~reg0.CLK
+Clock => Q[14]~reg0.CLK
+Clock => Q[15]~reg0.CLK
+Reset => Q[0]~reg0.ACLR
+Reset => Q[1]~reg0.ACLR
+Reset => Q[2]~reg0.ACLR
+Reset => Q[3]~reg0.ACLR
+Reset => Q[4]~reg0.ACLR
+Reset => Q[5]~reg0.ACLR
+Reset => Q[6]~reg0.ACLR
+Reset => Q[7]~reg0.ACLR
+Reset => Q[8]~reg0.ACLR
+Reset => Q[9]~reg0.ACLR
+Reset => Q[10]~reg0.ACLR
+Reset => Q[11]~reg0.ACLR
+Reset => Q[12]~reg0.ACLR
+Reset => Q[13]~reg0.ACLR
+Reset => Q[14]~reg0.ACLR
+Reset => Q[15]~reg0.ACLR
+enable => Q[15]~reg0.ENA
+enable => Q[14]~reg0.ENA
+enable => Q[13]~reg0.ENA
+enable => Q[12]~reg0.ENA
+enable => Q[11]~reg0.ENA
+enable => Q[10]~reg0.ENA
+enable => Q[9]~reg0.ENA
+enable => Q[8]~reg0.ENA
+enable => Q[7]~reg0.ENA
+enable => Q[6]~reg0.ENA
+enable => Q[5]~reg0.ENA
+enable => Q[4]~reg0.ENA
+enable => Q[3]~reg0.ENA
+enable => Q[2]~reg0.ENA
+enable => Q[1]~reg0.ENA
+enable => Q[0]~reg0.ENA
+Q[0] <= Q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[4] <= Q[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[5] <= Q[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[6] <= Q[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[7] <= Q[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[8] <= Q[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[9] <= Q[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[10] <= Q[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[11] <= Q[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[12] <= Q[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[13] <= Q[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[14] <= Q[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[15] <= Q[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|regn_16bit:regAvr
+R[0] => Q[0]~reg0.DATAIN
+R[1] => Q[1]~reg0.DATAIN
+R[2] => Q[2]~reg0.DATAIN
+R[3] => Q[3]~reg0.DATAIN
+R[4] => Q[4]~reg0.DATAIN
+R[5] => Q[5]~reg0.DATAIN
+R[6] => Q[6]~reg0.DATAIN
+R[7] => Q[7]~reg0.DATAIN
+R[8] => Q[8]~reg0.DATAIN
+R[9] => Q[9]~reg0.DATAIN
+R[10] => Q[10]~reg0.DATAIN
+R[11] => Q[11]~reg0.DATAIN
+R[12] => Q[12]~reg0.DATAIN
+R[13] => Q[13]~reg0.DATAIN
+R[14] => Q[14]~reg0.DATAIN
+R[15] => Q[15]~reg0.DATAIN
+Clock => Q[0]~reg0.CLK
+Clock => Q[1]~reg0.CLK
+Clock => Q[2]~reg0.CLK
+Clock => Q[3]~reg0.CLK
+Clock => Q[4]~reg0.CLK
+Clock => Q[5]~reg0.CLK
+Clock => Q[6]~reg0.CLK
+Clock => Q[7]~reg0.CLK
+Clock => Q[8]~reg0.CLK
+Clock => Q[9]~reg0.CLK
+Clock => Q[10]~reg0.CLK
+Clock => Q[11]~reg0.CLK
+Clock => Q[12]~reg0.CLK
+Clock => Q[13]~reg0.CLK
+Clock => Q[14]~reg0.CLK
+Clock => Q[15]~reg0.CLK
+Reset => Q[0]~reg0.ACLR
+Reset => Q[1]~reg0.ACLR
+Reset => Q[2]~reg0.ACLR
+Reset => Q[3]~reg0.ACLR
+Reset => Q[4]~reg0.ACLR
+Reset => Q[5]~reg0.ACLR
+Reset => Q[6]~reg0.ACLR
+Reset => Q[7]~reg0.ACLR
+Reset => Q[8]~reg0.ACLR
+Reset => Q[9]~reg0.ACLR
+Reset => Q[10]~reg0.ACLR
+Reset => Q[11]~reg0.ACLR
+Reset => Q[12]~reg0.ACLR
+Reset => Q[13]~reg0.ACLR
+Reset => Q[14]~reg0.ACLR
+Reset => Q[15]~reg0.ACLR
+enable => Q[15]~reg0.ENA
+enable => Q[14]~reg0.ENA
+enable => Q[13]~reg0.ENA
+enable => Q[12]~reg0.ENA
+enable => Q[11]~reg0.ENA
+enable => Q[10]~reg0.ENA
+enable => Q[9]~reg0.ENA
+enable => Q[8]~reg0.ENA
+enable => Q[7]~reg0.ENA
+enable => Q[6]~reg0.ENA
+enable => Q[5]~reg0.ENA
+enable => Q[4]~reg0.ENA
+enable => Q[3]~reg0.ENA
+enable => Q[2]~reg0.ENA
+enable => Q[1]~reg0.ENA
+enable => Q[0]~reg0.ENA
+Q[0] <= Q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[4] <= Q[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[5] <= Q[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[6] <= Q[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[7] <= Q[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[8] <= Q[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[9] <= Q[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[10] <= Q[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[11] <= Q[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[12] <= Q[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[13] <= Q[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[14] <= Q[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[15] <= Q[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|regn_16bit:regHigh
+R[0] => Q[0]~reg0.DATAIN
+R[1] => Q[1]~reg0.DATAIN
+R[2] => Q[2]~reg0.DATAIN
+R[3] => Q[3]~reg0.DATAIN
+R[4] => Q[4]~reg0.DATAIN
+R[5] => Q[5]~reg0.DATAIN
+R[6] => Q[6]~reg0.DATAIN
+R[7] => Q[7]~reg0.DATAIN
+R[8] => Q[8]~reg0.DATAIN
+R[9] => Q[9]~reg0.DATAIN
+R[10] => Q[10]~reg0.DATAIN
+R[11] => Q[11]~reg0.DATAIN
+R[12] => Q[12]~reg0.DATAIN
+R[13] => Q[13]~reg0.DATAIN
+R[14] => Q[14]~reg0.DATAIN
+R[15] => Q[15]~reg0.DATAIN
+Clock => Q[0]~reg0.CLK
+Clock => Q[1]~reg0.CLK
+Clock => Q[2]~reg0.CLK
+Clock => Q[3]~reg0.CLK
+Clock => Q[4]~reg0.CLK
+Clock => Q[5]~reg0.CLK
+Clock => Q[6]~reg0.CLK
+Clock => Q[7]~reg0.CLK
+Clock => Q[8]~reg0.CLK
+Clock => Q[9]~reg0.CLK
+Clock => Q[10]~reg0.CLK
+Clock => Q[11]~reg0.CLK
+Clock => Q[12]~reg0.CLK
+Clock => Q[13]~reg0.CLK
+Clock => Q[14]~reg0.CLK
+Clock => Q[15]~reg0.CLK
+Reset => Q[0]~reg0.ACLR
+Reset => Q[1]~reg0.ACLR
+Reset => Q[2]~reg0.ACLR
+Reset => Q[3]~reg0.ACLR
+Reset => Q[4]~reg0.ACLR
+Reset => Q[5]~reg0.ACLR
+Reset => Q[6]~reg0.ACLR
+Reset => Q[7]~reg0.ACLR
+Reset => Q[8]~reg0.ACLR
+Reset => Q[9]~reg0.ACLR
+Reset => Q[10]~reg0.ACLR
+Reset => Q[11]~reg0.ACLR
+Reset => Q[12]~reg0.ACLR
+Reset => Q[13]~reg0.ACLR
+Reset => Q[14]~reg0.ACLR
+Reset => Q[15]~reg0.ACLR
+enable => Q[15]~reg0.ENA
+enable => Q[14]~reg0.ENA
+enable => Q[13]~reg0.ENA
+enable => Q[12]~reg0.ENA
+enable => Q[11]~reg0.ENA
+enable => Q[10]~reg0.ENA
+enable => Q[9]~reg0.ENA
+enable => Q[8]~reg0.ENA
+enable => Q[7]~reg0.ENA
+enable => Q[6]~reg0.ENA
+enable => Q[5]~reg0.ENA
+enable => Q[4]~reg0.ENA
+enable => Q[3]~reg0.ENA
+enable => Q[2]~reg0.ENA
+enable => Q[1]~reg0.ENA
+enable => Q[0]~reg0.ENA
+Q[0] <= Q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[4] <= Q[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[5] <= Q[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[6] <= Q[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[7] <= Q[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[8] <= Q[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[9] <= Q[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[10] <= Q[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[11] <= Q[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[12] <= Q[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[13] <= Q[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[14] <= Q[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Q[15] <= Q[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_10bit:mpx0
+x[0] => multiplexer2to1:G1:0:mux.x
+x[1] => multiplexer2to1:G1:1:mux.x
+x[2] => multiplexer2to1:G1:2:mux.x
+x[3] => multiplexer2to1:G1:3:mux.x
+x[4] => multiplexer2to1:G1:4:mux.x
+x[5] => multiplexer2to1:G1:5:mux.x
+x[6] => multiplexer2to1:G1:6:mux.x
+x[7] => multiplexer2to1:G1:7:mux.x
+x[8] => multiplexer2to1:G1:8:mux.x
+x[9] => multiplexer2to1:G1:9:mux.x
+y[0] => multiplexer2to1:G1:0:mux.y
+y[1] => multiplexer2to1:G1:1:mux.y
+y[2] => multiplexer2to1:G1:2:mux.y
+y[3] => multiplexer2to1:G1:3:mux.y
+y[4] => multiplexer2to1:G1:4:mux.y
+y[5] => multiplexer2to1:G1:5:mux.y
+y[6] => multiplexer2to1:G1:6:mux.y
+y[7] => multiplexer2to1:G1:7:mux.y
+y[8] => multiplexer2to1:G1:8:mux.y
+y[9] => multiplexer2to1:G1:9:mux.y
+s => multiplexer2to1:G1:0:mux.s
+s => multiplexer2to1:G1:1:mux.s
+s => multiplexer2to1:G1:2:mux.s
+s => multiplexer2to1:G1:3:mux.s
+s => multiplexer2to1:G1:4:mux.s
+s => multiplexer2to1:G1:5:mux.s
+s => multiplexer2to1:G1:6:mux.s
+s => multiplexer2to1:G1:7:mux.s
+s => multiplexer2to1:G1:8:mux.s
+s => multiplexer2to1:G1:9:mux.s
+m[0] <= multiplexer2to1:G1:0:mux.m
+m[1] <= multiplexer2to1:G1:1:mux.m
+m[2] <= multiplexer2to1:G1:2:mux.m
+m[3] <= multiplexer2to1:G1:3:mux.m
+m[4] <= multiplexer2to1:G1:4:mux.m
+m[5] <= multiplexer2to1:G1:5:mux.m
+m[6] <= multiplexer2to1:G1:6:mux.m
+m[7] <= multiplexer2to1:G1:7:mux.m
+m[8] <= multiplexer2to1:G1:8:mux.m
+m[9] <= multiplexer2to1:G1:9:mux.m
+
+
+|irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:0:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:1:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:2:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:3:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:4:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:5:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:6:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:7:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:8:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:9:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx1
+x[0] => multiplexer2to1:G1:0:mux.x
+x[1] => multiplexer2to1:G1:1:mux.x
+x[2] => multiplexer2to1:G1:2:mux.x
+x[3] => multiplexer2to1:G1:3:mux.x
+x[4] => multiplexer2to1:G1:4:mux.x
+x[5] => multiplexer2to1:G1:5:mux.x
+x[6] => multiplexer2to1:G1:6:mux.x
+x[7] => multiplexer2to1:G1:7:mux.x
+x[8] => multiplexer2to1:G1:8:mux.x
+x[9] => multiplexer2to1:G1:9:mux.x
+x[10] => multiplexer2to1:G1:10:mux.x
+x[11] => multiplexer2to1:G1:11:mux.x
+x[12] => multiplexer2to1:G1:12:mux.x
+x[13] => multiplexer2to1:G1:13:mux.x
+x[14] => multiplexer2to1:G1:14:mux.x
+x[15] => multiplexer2to1:G1:15:mux.x
+y[0] => multiplexer2to1:G1:0:mux.y
+y[1] => multiplexer2to1:G1:1:mux.y
+y[2] => multiplexer2to1:G1:2:mux.y
+y[3] => multiplexer2to1:G1:3:mux.y
+y[4] => multiplexer2to1:G1:4:mux.y
+y[5] => multiplexer2to1:G1:5:mux.y
+y[6] => multiplexer2to1:G1:6:mux.y
+y[7] => multiplexer2to1:G1:7:mux.y
+y[8] => multiplexer2to1:G1:8:mux.y
+y[9] => multiplexer2to1:G1:9:mux.y
+y[10] => multiplexer2to1:G1:10:mux.y
+y[11] => multiplexer2to1:G1:11:mux.y
+y[12] => multiplexer2to1:G1:12:mux.y
+y[13] => multiplexer2to1:G1:13:mux.y
+y[14] => multiplexer2to1:G1:14:mux.y
+y[15] => multiplexer2to1:G1:15:mux.y
+s => multiplexer2to1:G1:0:mux.s
+s => multiplexer2to1:G1:1:mux.s
+s => multiplexer2to1:G1:2:mux.s
+s => multiplexer2to1:G1:3:mux.s
+s => multiplexer2to1:G1:4:mux.s
+s => multiplexer2to1:G1:5:mux.s
+s => multiplexer2to1:G1:6:mux.s
+s => multiplexer2to1:G1:7:mux.s
+s => multiplexer2to1:G1:8:mux.s
+s => multiplexer2to1:G1:9:mux.s
+s => multiplexer2to1:G1:10:mux.s
+s => multiplexer2to1:G1:11:mux.s
+s => multiplexer2to1:G1:12:mux.s
+s => multiplexer2to1:G1:13:mux.s
+s => multiplexer2to1:G1:14:mux.s
+s => multiplexer2to1:G1:15:mux.s
+m[0] <= multiplexer2to1:G1:0:mux.m
+m[1] <= multiplexer2to1:G1:1:mux.m
+m[2] <= multiplexer2to1:G1:2:mux.m
+m[3] <= multiplexer2to1:G1:3:mux.m
+m[4] <= multiplexer2to1:G1:4:mux.m
+m[5] <= multiplexer2to1:G1:5:mux.m
+m[6] <= multiplexer2to1:G1:6:mux.m
+m[7] <= multiplexer2to1:G1:7:mux.m
+m[8] <= multiplexer2to1:G1:8:mux.m
+m[9] <= multiplexer2to1:G1:9:mux.m
+m[10] <= multiplexer2to1:G1:10:mux.m
+m[11] <= multiplexer2to1:G1:11:mux.m
+m[12] <= multiplexer2to1:G1:12:mux.m
+m[13] <= multiplexer2to1:G1:13:mux.m
+m[14] <= multiplexer2to1:G1:14:mux.m
+m[15] <= multiplexer2to1:G1:15:mux.m
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:0:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:1:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:2:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:3:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:4:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:5:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:6:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:7:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:8:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:9:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:10:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:11:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:12:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:13:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:14:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:15:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx2
+x[0] => multiplexer2to1:G1:0:mux.x
+x[1] => multiplexer2to1:G1:1:mux.x
+x[2] => multiplexer2to1:G1:2:mux.x
+x[3] => multiplexer2to1:G1:3:mux.x
+x[4] => multiplexer2to1:G1:4:mux.x
+x[5] => multiplexer2to1:G1:5:mux.x
+x[6] => multiplexer2to1:G1:6:mux.x
+x[7] => multiplexer2to1:G1:7:mux.x
+x[8] => multiplexer2to1:G1:8:mux.x
+x[9] => multiplexer2to1:G1:9:mux.x
+x[10] => multiplexer2to1:G1:10:mux.x
+x[11] => multiplexer2to1:G1:11:mux.x
+x[12] => multiplexer2to1:G1:12:mux.x
+x[13] => multiplexer2to1:G1:13:mux.x
+x[14] => multiplexer2to1:G1:14:mux.x
+x[15] => multiplexer2to1:G1:15:mux.x
+y[0] => multiplexer2to1:G1:0:mux.y
+y[1] => multiplexer2to1:G1:1:mux.y
+y[2] => multiplexer2to1:G1:2:mux.y
+y[3] => multiplexer2to1:G1:3:mux.y
+y[4] => multiplexer2to1:G1:4:mux.y
+y[5] => multiplexer2to1:G1:5:mux.y
+y[6] => multiplexer2to1:G1:6:mux.y
+y[7] => multiplexer2to1:G1:7:mux.y
+y[8] => multiplexer2to1:G1:8:mux.y
+y[9] => multiplexer2to1:G1:9:mux.y
+y[10] => multiplexer2to1:G1:10:mux.y
+y[11] => multiplexer2to1:G1:11:mux.y
+y[12] => multiplexer2to1:G1:12:mux.y
+y[13] => multiplexer2to1:G1:13:mux.y
+y[14] => multiplexer2to1:G1:14:mux.y
+y[15] => multiplexer2to1:G1:15:mux.y
+s => multiplexer2to1:G1:0:mux.s
+s => multiplexer2to1:G1:1:mux.s
+s => multiplexer2to1:G1:2:mux.s
+s => multiplexer2to1:G1:3:mux.s
+s => multiplexer2to1:G1:4:mux.s
+s => multiplexer2to1:G1:5:mux.s
+s => multiplexer2to1:G1:6:mux.s
+s => multiplexer2to1:G1:7:mux.s
+s => multiplexer2to1:G1:8:mux.s
+s => multiplexer2to1:G1:9:mux.s
+s => multiplexer2to1:G1:10:mux.s
+s => multiplexer2to1:G1:11:mux.s
+s => multiplexer2to1:G1:12:mux.s
+s => multiplexer2to1:G1:13:mux.s
+s => multiplexer2to1:G1:14:mux.s
+s => multiplexer2to1:G1:15:mux.s
+m[0] <= multiplexer2to1:G1:0:mux.m
+m[1] <= multiplexer2to1:G1:1:mux.m
+m[2] <= multiplexer2to1:G1:2:mux.m
+m[3] <= multiplexer2to1:G1:3:mux.m
+m[4] <= multiplexer2to1:G1:4:mux.m
+m[5] <= multiplexer2to1:G1:5:mux.m
+m[6] <= multiplexer2to1:G1:6:mux.m
+m[7] <= multiplexer2to1:G1:7:mux.m
+m[8] <= multiplexer2to1:G1:8:mux.m
+m[9] <= multiplexer2to1:G1:9:mux.m
+m[10] <= multiplexer2to1:G1:10:mux.m
+m[11] <= multiplexer2to1:G1:11:mux.m
+m[12] <= multiplexer2to1:G1:12:mux.m
+m[13] <= multiplexer2to1:G1:13:mux.m
+m[14] <= multiplexer2to1:G1:14:mux.m
+m[15] <= multiplexer2to1:G1:15:mux.m
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx2|multiplexer2to1:\G1:0:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx2|multiplexer2to1:\G1:1:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx2|multiplexer2to1:\G1:2:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx2|multiplexer2to1:\G1:3:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx2|multiplexer2to1:\G1:4:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx2|multiplexer2to1:\G1:5:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx2|multiplexer2to1:\G1:6:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx2|multiplexer2to1:\G1:7:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx2|multiplexer2to1:\G1:8:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx2|multiplexer2to1:\G1:9:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx2|multiplexer2to1:\G1:10:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx2|multiplexer2to1:\G1:11:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx2|multiplexer2to1:\G1:12:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx2|multiplexer2to1:\G1:13:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx2|multiplexer2to1:\G1:14:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx2|multiplexer2to1:\G1:15:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx3
+x[0] => multiplexer2to1:G1:0:mux.x
+x[1] => multiplexer2to1:G1:1:mux.x
+x[2] => multiplexer2to1:G1:2:mux.x
+x[3] => multiplexer2to1:G1:3:mux.x
+x[4] => multiplexer2to1:G1:4:mux.x
+x[5] => multiplexer2to1:G1:5:mux.x
+x[6] => multiplexer2to1:G1:6:mux.x
+x[7] => multiplexer2to1:G1:7:mux.x
+x[8] => multiplexer2to1:G1:8:mux.x
+x[9] => multiplexer2to1:G1:9:mux.x
+x[10] => multiplexer2to1:G1:10:mux.x
+x[11] => multiplexer2to1:G1:11:mux.x
+x[12] => multiplexer2to1:G1:12:mux.x
+x[13] => multiplexer2to1:G1:13:mux.x
+x[14] => multiplexer2to1:G1:14:mux.x
+x[15] => multiplexer2to1:G1:15:mux.x
+y[0] => multiplexer2to1:G1:0:mux.y
+y[1] => multiplexer2to1:G1:1:mux.y
+y[2] => multiplexer2to1:G1:2:mux.y
+y[3] => multiplexer2to1:G1:3:mux.y
+y[4] => multiplexer2to1:G1:4:mux.y
+y[5] => multiplexer2to1:G1:5:mux.y
+y[6] => multiplexer2to1:G1:6:mux.y
+y[7] => multiplexer2to1:G1:7:mux.y
+y[8] => multiplexer2to1:G1:8:mux.y
+y[9] => multiplexer2to1:G1:9:mux.y
+y[10] => multiplexer2to1:G1:10:mux.y
+y[11] => multiplexer2to1:G1:11:mux.y
+y[12] => multiplexer2to1:G1:12:mux.y
+y[13] => multiplexer2to1:G1:13:mux.y
+y[14] => multiplexer2to1:G1:14:mux.y
+y[15] => multiplexer2to1:G1:15:mux.y
+s => multiplexer2to1:G1:0:mux.s
+s => multiplexer2to1:G1:1:mux.s
+s => multiplexer2to1:G1:2:mux.s
+s => multiplexer2to1:G1:3:mux.s
+s => multiplexer2to1:G1:4:mux.s
+s => multiplexer2to1:G1:5:mux.s
+s => multiplexer2to1:G1:6:mux.s
+s => multiplexer2to1:G1:7:mux.s
+s => multiplexer2to1:G1:8:mux.s
+s => multiplexer2to1:G1:9:mux.s
+s => multiplexer2to1:G1:10:mux.s
+s => multiplexer2to1:G1:11:mux.s
+s => multiplexer2to1:G1:12:mux.s
+s => multiplexer2to1:G1:13:mux.s
+s => multiplexer2to1:G1:14:mux.s
+s => multiplexer2to1:G1:15:mux.s
+m[0] <= multiplexer2to1:G1:0:mux.m
+m[1] <= multiplexer2to1:G1:1:mux.m
+m[2] <= multiplexer2to1:G1:2:mux.m
+m[3] <= multiplexer2to1:G1:3:mux.m
+m[4] <= multiplexer2to1:G1:4:mux.m
+m[5] <= multiplexer2to1:G1:5:mux.m
+m[6] <= multiplexer2to1:G1:6:mux.m
+m[7] <= multiplexer2to1:G1:7:mux.m
+m[8] <= multiplexer2to1:G1:8:mux.m
+m[9] <= multiplexer2to1:G1:9:mux.m
+m[10] <= multiplexer2to1:G1:10:mux.m
+m[11] <= multiplexer2to1:G1:11:mux.m
+m[12] <= multiplexer2to1:G1:12:mux.m
+m[13] <= multiplexer2to1:G1:13:mux.m
+m[14] <= multiplexer2to1:G1:14:mux.m
+m[15] <= multiplexer2to1:G1:15:mux.m
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx3|multiplexer2to1:\G1:0:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx3|multiplexer2to1:\G1:1:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx3|multiplexer2to1:\G1:2:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx3|multiplexer2to1:\G1:3:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx3|multiplexer2to1:\G1:4:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx3|multiplexer2to1:\G1:5:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx3|multiplexer2to1:\G1:6:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx3|multiplexer2to1:\G1:7:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx3|multiplexer2to1:\G1:8:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx3|multiplexer2to1:\G1:9:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx3|multiplexer2to1:\G1:10:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx3|multiplexer2to1:\G1:11:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx3|multiplexer2to1:\G1:12:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx3|multiplexer2to1:\G1:13:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx3|multiplexer2to1:\G1:14:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx3|multiplexer2to1:\G1:15:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4
+u[0] => multiplexer2to1_8bit:mu1.x[0]
+u[1] => multiplexer2to1_8bit:mu1.x[1]
+u[2] => multiplexer2to1_8bit:mu1.x[2]
+u[3] => multiplexer2to1_8bit:mu1.x[3]
+u[4] => multiplexer2to1_8bit:mu1.x[4]
+u[5] => multiplexer2to1_8bit:mu1.x[5]
+u[6] => multiplexer2to1_8bit:mu1.x[6]
+u[7] => multiplexer2to1_8bit:mu1.x[7]
+v[0] => multiplexer2to1_8bit:mu1.y[0]
+v[1] => multiplexer2to1_8bit:mu1.y[1]
+v[2] => multiplexer2to1_8bit:mu1.y[2]
+v[3] => multiplexer2to1_8bit:mu1.y[3]
+v[4] => multiplexer2to1_8bit:mu1.y[4]
+v[5] => multiplexer2to1_8bit:mu1.y[5]
+v[6] => multiplexer2to1_8bit:mu1.y[6]
+v[7] => multiplexer2to1_8bit:mu1.y[7]
+w[0] => multiplexer2to1_8bit:mu2.x[0]
+w[1] => multiplexer2to1_8bit:mu2.x[1]
+w[2] => multiplexer2to1_8bit:mu2.x[2]
+w[3] => multiplexer2to1_8bit:mu2.x[3]
+w[4] => multiplexer2to1_8bit:mu2.x[4]
+w[5] => multiplexer2to1_8bit:mu2.x[5]
+w[6] => multiplexer2to1_8bit:mu2.x[6]
+w[7] => multiplexer2to1_8bit:mu2.x[7]
+x[0] => multiplexer2to1_8bit:mu2.y[0]
+x[1] => multiplexer2to1_8bit:mu2.y[1]
+x[2] => multiplexer2to1_8bit:mu2.y[2]
+x[3] => multiplexer2to1_8bit:mu2.y[3]
+x[4] => multiplexer2to1_8bit:mu2.y[4]
+x[5] => multiplexer2to1_8bit:mu2.y[5]
+x[6] => multiplexer2to1_8bit:mu2.y[6]
+x[7] => multiplexer2to1_8bit:mu2.y[7]
+selettore[0] => multiplexer2to1_8bit:mu1.s
+selettore[0] => multiplexer2to1_8bit:mu2.s
+selettore[1] => multiplexer2to1_8bit:mu3.s
+f[0] <= multiplexer2to1_8bit:mu3.m[0]
+f[1] <= multiplexer2to1_8bit:mu3.m[1]
+f[2] <= multiplexer2to1_8bit:mu3.m[2]
+f[3] <= multiplexer2to1_8bit:mu3.m[3]
+f[4] <= multiplexer2to1_8bit:mu3.m[4]
+f[5] <= multiplexer2to1_8bit:mu3.m[5]
+f[6] <= multiplexer2to1_8bit:mu3.m[6]
+f[7] <= multiplexer2to1_8bit:mu3.m[7]
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu1
+x[0] => multiplexer2to1:G1:0:mux.x
+x[1] => multiplexer2to1:G1:1:mux.x
+x[2] => multiplexer2to1:G1:2:mux.x
+x[3] => multiplexer2to1:G1:3:mux.x
+x[4] => multiplexer2to1:G1:4:mux.x
+x[5] => multiplexer2to1:G1:5:mux.x
+x[6] => multiplexer2to1:G1:6:mux.x
+x[7] => multiplexer2to1:G1:7:mux.x
+y[0] => multiplexer2to1:G1:0:mux.y
+y[1] => multiplexer2to1:G1:1:mux.y
+y[2] => multiplexer2to1:G1:2:mux.y
+y[3] => multiplexer2to1:G1:3:mux.y
+y[4] => multiplexer2to1:G1:4:mux.y
+y[5] => multiplexer2to1:G1:5:mux.y
+y[6] => multiplexer2to1:G1:6:mux.y
+y[7] => multiplexer2to1:G1:7:mux.y
+s => multiplexer2to1:G1:0:mux.s
+s => multiplexer2to1:G1:1:mux.s
+s => multiplexer2to1:G1:2:mux.s
+s => multiplexer2to1:G1:3:mux.s
+s => multiplexer2to1:G1:4:mux.s
+s => multiplexer2to1:G1:5:mux.s
+s => multiplexer2to1:G1:6:mux.s
+s => multiplexer2to1:G1:7:mux.s
+m[0] <= multiplexer2to1:G1:0:mux.m
+m[1] <= multiplexer2to1:G1:1:mux.m
+m[2] <= multiplexer2to1:G1:2:mux.m
+m[3] <= multiplexer2to1:G1:3:mux.m
+m[4] <= multiplexer2to1:G1:4:mux.m
+m[5] <= multiplexer2to1:G1:5:mux.m
+m[6] <= multiplexer2to1:G1:6:mux.m
+m[7] <= multiplexer2to1:G1:7:mux.m
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu1|multiplexer2to1:\G1:0:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu1|multiplexer2to1:\G1:1:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu1|multiplexer2to1:\G1:2:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu1|multiplexer2to1:\G1:3:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu1|multiplexer2to1:\G1:4:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu1|multiplexer2to1:\G1:5:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu1|multiplexer2to1:\G1:6:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu1|multiplexer2to1:\G1:7:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu2
+x[0] => multiplexer2to1:G1:0:mux.x
+x[1] => multiplexer2to1:G1:1:mux.x
+x[2] => multiplexer2to1:G1:2:mux.x
+x[3] => multiplexer2to1:G1:3:mux.x
+x[4] => multiplexer2to1:G1:4:mux.x
+x[5] => multiplexer2to1:G1:5:mux.x
+x[6] => multiplexer2to1:G1:6:mux.x
+x[7] => multiplexer2to1:G1:7:mux.x
+y[0] => multiplexer2to1:G1:0:mux.y
+y[1] => multiplexer2to1:G1:1:mux.y
+y[2] => multiplexer2to1:G1:2:mux.y
+y[3] => multiplexer2to1:G1:3:mux.y
+y[4] => multiplexer2to1:G1:4:mux.y
+y[5] => multiplexer2to1:G1:5:mux.y
+y[6] => multiplexer2to1:G1:6:mux.y
+y[7] => multiplexer2to1:G1:7:mux.y
+s => multiplexer2to1:G1:0:mux.s
+s => multiplexer2to1:G1:1:mux.s
+s => multiplexer2to1:G1:2:mux.s
+s => multiplexer2to1:G1:3:mux.s
+s => multiplexer2to1:G1:4:mux.s
+s => multiplexer2to1:G1:5:mux.s
+s => multiplexer2to1:G1:6:mux.s
+s => multiplexer2to1:G1:7:mux.s
+m[0] <= multiplexer2to1:G1:0:mux.m
+m[1] <= multiplexer2to1:G1:1:mux.m
+m[2] <= multiplexer2to1:G1:2:mux.m
+m[3] <= multiplexer2to1:G1:3:mux.m
+m[4] <= multiplexer2to1:G1:4:mux.m
+m[5] <= multiplexer2to1:G1:5:mux.m
+m[6] <= multiplexer2to1:G1:6:mux.m
+m[7] <= multiplexer2to1:G1:7:mux.m
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu2|multiplexer2to1:\G1:0:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu2|multiplexer2to1:\G1:1:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu2|multiplexer2to1:\G1:2:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu2|multiplexer2to1:\G1:3:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu2|multiplexer2to1:\G1:4:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu2|multiplexer2to1:\G1:5:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu2|multiplexer2to1:\G1:6:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu2|multiplexer2to1:\G1:7:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3
+x[0] => multiplexer2to1:G1:0:mux.x
+x[1] => multiplexer2to1:G1:1:mux.x
+x[2] => multiplexer2to1:G1:2:mux.x
+x[3] => multiplexer2to1:G1:3:mux.x
+x[4] => multiplexer2to1:G1:4:mux.x
+x[5] => multiplexer2to1:G1:5:mux.x
+x[6] => multiplexer2to1:G1:6:mux.x
+x[7] => multiplexer2to1:G1:7:mux.x
+y[0] => multiplexer2to1:G1:0:mux.y
+y[1] => multiplexer2to1:G1:1:mux.y
+y[2] => multiplexer2to1:G1:2:mux.y
+y[3] => multiplexer2to1:G1:3:mux.y
+y[4] => multiplexer2to1:G1:4:mux.y
+y[5] => multiplexer2to1:G1:5:mux.y
+y[6] => multiplexer2to1:G1:6:mux.y
+y[7] => multiplexer2to1:G1:7:mux.y
+s => multiplexer2to1:G1:0:mux.s
+s => multiplexer2to1:G1:1:mux.s
+s => multiplexer2to1:G1:2:mux.s
+s => multiplexer2to1:G1:3:mux.s
+s => multiplexer2to1:G1:4:mux.s
+s => multiplexer2to1:G1:5:mux.s
+s => multiplexer2to1:G1:6:mux.s
+s => multiplexer2to1:G1:7:mux.s
+m[0] <= multiplexer2to1:G1:0:mux.m
+m[1] <= multiplexer2to1:G1:1:mux.m
+m[2] <= multiplexer2to1:G1:2:mux.m
+m[3] <= multiplexer2to1:G1:3:mux.m
+m[4] <= multiplexer2to1:G1:4:mux.m
+m[5] <= multiplexer2to1:G1:5:mux.m
+m[6] <= multiplexer2to1:G1:6:mux.m
+m[7] <= multiplexer2to1:G1:7:mux.m
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:0:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:1:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:2:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:3:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:4:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:5:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:6:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:7:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx5
+x[0] => multiplexer2to1:G1:0:mux.x
+x[1] => multiplexer2to1:G1:1:mux.x
+x[2] => multiplexer2to1:G1:2:mux.x
+x[3] => multiplexer2to1:G1:3:mux.x
+x[4] => multiplexer2to1:G1:4:mux.x
+x[5] => multiplexer2to1:G1:5:mux.x
+x[6] => multiplexer2to1:G1:6:mux.x
+x[7] => multiplexer2to1:G1:7:mux.x
+x[8] => multiplexer2to1:G1:8:mux.x
+x[9] => multiplexer2to1:G1:9:mux.x
+x[10] => multiplexer2to1:G1:10:mux.x
+x[11] => multiplexer2to1:G1:11:mux.x
+x[12] => multiplexer2to1:G1:12:mux.x
+x[13] => multiplexer2to1:G1:13:mux.x
+x[14] => multiplexer2to1:G1:14:mux.x
+x[15] => multiplexer2to1:G1:15:mux.x
+y[0] => multiplexer2to1:G1:0:mux.y
+y[1] => multiplexer2to1:G1:1:mux.y
+y[2] => multiplexer2to1:G1:2:mux.y
+y[3] => multiplexer2to1:G1:3:mux.y
+y[4] => multiplexer2to1:G1:4:mux.y
+y[5] => multiplexer2to1:G1:5:mux.y
+y[6] => multiplexer2to1:G1:6:mux.y
+y[7] => multiplexer2to1:G1:7:mux.y
+y[8] => multiplexer2to1:G1:8:mux.y
+y[9] => multiplexer2to1:G1:9:mux.y
+y[10] => multiplexer2to1:G1:10:mux.y
+y[11] => multiplexer2to1:G1:11:mux.y
+y[12] => multiplexer2to1:G1:12:mux.y
+y[13] => multiplexer2to1:G1:13:mux.y
+y[14] => multiplexer2to1:G1:14:mux.y
+y[15] => multiplexer2to1:G1:15:mux.y
+s => multiplexer2to1:G1:0:mux.s
+s => multiplexer2to1:G1:1:mux.s
+s => multiplexer2to1:G1:2:mux.s
+s => multiplexer2to1:G1:3:mux.s
+s => multiplexer2to1:G1:4:mux.s
+s => multiplexer2to1:G1:5:mux.s
+s => multiplexer2to1:G1:6:mux.s
+s => multiplexer2to1:G1:7:mux.s
+s => multiplexer2to1:G1:8:mux.s
+s => multiplexer2to1:G1:9:mux.s
+s => multiplexer2to1:G1:10:mux.s
+s => multiplexer2to1:G1:11:mux.s
+s => multiplexer2to1:G1:12:mux.s
+s => multiplexer2to1:G1:13:mux.s
+s => multiplexer2to1:G1:14:mux.s
+s => multiplexer2to1:G1:15:mux.s
+m[0] <= multiplexer2to1:G1:0:mux.m
+m[1] <= multiplexer2to1:G1:1:mux.m
+m[2] <= multiplexer2to1:G1:2:mux.m
+m[3] <= multiplexer2to1:G1:3:mux.m
+m[4] <= multiplexer2to1:G1:4:mux.m
+m[5] <= multiplexer2to1:G1:5:mux.m
+m[6] <= multiplexer2to1:G1:6:mux.m
+m[7] <= multiplexer2to1:G1:7:mux.m
+m[8] <= multiplexer2to1:G1:8:mux.m
+m[9] <= multiplexer2to1:G1:9:mux.m
+m[10] <= multiplexer2to1:G1:10:mux.m
+m[11] <= multiplexer2to1:G1:11:mux.m
+m[12] <= multiplexer2to1:G1:12:mux.m
+m[13] <= multiplexer2to1:G1:13:mux.m
+m[14] <= multiplexer2to1:G1:14:mux.m
+m[15] <= multiplexer2to1:G1:15:mux.m
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx5|multiplexer2to1:\G1:0:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx5|multiplexer2to1:\G1:1:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx5|multiplexer2to1:\G1:2:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx5|multiplexer2to1:\G1:3:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx5|multiplexer2to1:\G1:4:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx5|multiplexer2to1:\G1:5:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx5|multiplexer2to1:\G1:6:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx5|multiplexer2to1:\G1:7:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx5|multiplexer2to1:\G1:8:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx5|multiplexer2to1:\G1:9:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx5|multiplexer2to1:\G1:10:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx5|multiplexer2to1:\G1:11:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx5|multiplexer2to1:\G1:12:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx5|multiplexer2to1:\G1:13:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx5|multiplexer2to1:\G1:14:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|multiplexer2to1_16bit:mpx5|multiplexer2to1:\G1:15:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|ripple_carry_adder:adder
+x_in[0] => fulladder:fu_primo.a
+x_in[1] => fulladder:G2:1:fu.a
+x_in[2] => fulladder:G2:2:fu.a
+x_in[3] => fulladder:G2:3:fu.a
+x_in[4] => fulladder:G2:4:fu.a
+x_in[5] => fulladder:G2:5:fu.a
+x_in[6] => fulladder:G2:6:fu.a
+x_in[7] => fulladder:G2:7:fu.a
+x_in[8] => fulladder:G2:8:fu.a
+x_in[9] => fulladder:G2:9:fu.a
+x_in[10] => fulladder:G2:10:fu.a
+x_in[11] => fulladder:G2:11:fu.a
+x_in[12] => fulladder:G2:12:fu.a
+x_in[13] => fulladder:G2:13:fu.a
+x_in[14] => fulladder:G2:14:fu.a
+x_in[15] => fulladder:G2:15:fu.a
+x_in[16] => fulladder:fu_final.a
+y_in[0] => fulladder:fu_primo.b
+y_in[1] => fulladder:G2:1:fu.b
+y_in[2] => fulladder:G2:2:fu.b
+y_in[3] => fulladder:G2:3:fu.b
+y_in[4] => fulladder:G2:4:fu.b
+y_in[5] => fulladder:G2:5:fu.b
+y_in[6] => fulladder:G2:6:fu.b
+y_in[7] => fulladder:G2:7:fu.b
+y_in[8] => fulladder:G2:8:fu.b
+y_in[9] => fulladder:G2:9:fu.b
+y_in[10] => fulladder:G2:10:fu.b
+y_in[11] => fulladder:G2:11:fu.b
+y_in[12] => fulladder:G2:12:fu.b
+y_in[13] => fulladder:G2:13:fu.b
+y_in[14] => fulladder:G2:14:fu.b
+y_in[15] => fulladder:G2:15:fu.b
+y_in[16] => fulladder:fu_final.b
+c_in => fulladder:fu_primo.cin
+c_out <= fulladder:fu_final.cout
+s_out[0] <= fulladder:fu_primo.f
+s_out[1] <= fulladder:G2:1:fu.f
+s_out[2] <= fulladder:G2:2:fu.f
+s_out[3] <= fulladder:G2:3:fu.f
+s_out[4] <= fulladder:G2:4:fu.f
+s_out[5] <= fulladder:G2:5:fu.f
+s_out[6] <= fulladder:G2:6:fu.f
+s_out[7] <= fulladder:G2:7:fu.f
+s_out[8] <= fulladder:G2:8:fu.f
+s_out[9] <= fulladder:G2:9:fu.f
+s_out[10] <= fulladder:G2:10:fu.f
+s_out[11] <= fulladder:G2:11:fu.f
+s_out[12] <= fulladder:G2:12:fu.f
+s_out[13] <= fulladder:G2:13:fu.f
+s_out[14] <= fulladder:G2:14:fu.f
+s_out[15] <= fulladder:G2:15:fu.f
+s_out[16] <= fulladder:fu_final.f
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:fu_primo
+a => selettore.IN0
+b => selettore.IN1
+b => multiplexer2to1:mu1.x
+cin => f.IN1
+cin => multiplexer2to1:mu1.y
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= multiplexer2to1:mu1.m
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:fu_primo|multiplexer2to1:mu1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:1:fu
+a => selettore.IN0
+b => selettore.IN1
+b => multiplexer2to1:mu1.x
+cin => f.IN1
+cin => multiplexer2to1:mu1.y
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= multiplexer2to1:mu1.m
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:1:fu|multiplexer2to1:mu1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:2:fu
+a => selettore.IN0
+b => selettore.IN1
+b => multiplexer2to1:mu1.x
+cin => f.IN1
+cin => multiplexer2to1:mu1.y
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= multiplexer2to1:mu1.m
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:2:fu|multiplexer2to1:mu1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:3:fu
+a => selettore.IN0
+b => selettore.IN1
+b => multiplexer2to1:mu1.x
+cin => f.IN1
+cin => multiplexer2to1:mu1.y
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= multiplexer2to1:mu1.m
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:3:fu|multiplexer2to1:mu1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:4:fu
+a => selettore.IN0
+b => selettore.IN1
+b => multiplexer2to1:mu1.x
+cin => f.IN1
+cin => multiplexer2to1:mu1.y
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= multiplexer2to1:mu1.m
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:4:fu|multiplexer2to1:mu1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:5:fu
+a => selettore.IN0
+b => selettore.IN1
+b => multiplexer2to1:mu1.x
+cin => f.IN1
+cin => multiplexer2to1:mu1.y
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= multiplexer2to1:mu1.m
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:5:fu|multiplexer2to1:mu1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:6:fu
+a => selettore.IN0
+b => selettore.IN1
+b => multiplexer2to1:mu1.x
+cin => f.IN1
+cin => multiplexer2to1:mu1.y
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= multiplexer2to1:mu1.m
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:6:fu|multiplexer2to1:mu1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:7:fu
+a => selettore.IN0
+b => selettore.IN1
+b => multiplexer2to1:mu1.x
+cin => f.IN1
+cin => multiplexer2to1:mu1.y
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= multiplexer2to1:mu1.m
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:7:fu|multiplexer2to1:mu1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:8:fu
+a => selettore.IN0
+b => selettore.IN1
+b => multiplexer2to1:mu1.x
+cin => f.IN1
+cin => multiplexer2to1:mu1.y
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= multiplexer2to1:mu1.m
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:8:fu|multiplexer2to1:mu1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:9:fu
+a => selettore.IN0
+b => selettore.IN1
+b => multiplexer2to1:mu1.x
+cin => f.IN1
+cin => multiplexer2to1:mu1.y
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= multiplexer2to1:mu1.m
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:9:fu|multiplexer2to1:mu1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:10:fu
+a => selettore.IN0
+b => selettore.IN1
+b => multiplexer2to1:mu1.x
+cin => f.IN1
+cin => multiplexer2to1:mu1.y
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= multiplexer2to1:mu1.m
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:10:fu|multiplexer2to1:mu1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:11:fu
+a => selettore.IN0
+b => selettore.IN1
+b => multiplexer2to1:mu1.x
+cin => f.IN1
+cin => multiplexer2to1:mu1.y
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= multiplexer2to1:mu1.m
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:11:fu|multiplexer2to1:mu1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:12:fu
+a => selettore.IN0
+b => selettore.IN1
+b => multiplexer2to1:mu1.x
+cin => f.IN1
+cin => multiplexer2to1:mu1.y
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= multiplexer2to1:mu1.m
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:12:fu|multiplexer2to1:mu1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:13:fu
+a => selettore.IN0
+b => selettore.IN1
+b => multiplexer2to1:mu1.x
+cin => f.IN1
+cin => multiplexer2to1:mu1.y
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= multiplexer2to1:mu1.m
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:13:fu|multiplexer2to1:mu1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:14:fu
+a => selettore.IN0
+b => selettore.IN1
+b => multiplexer2to1:mu1.x
+cin => f.IN1
+cin => multiplexer2to1:mu1.y
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= multiplexer2to1:mu1.m
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:14:fu|multiplexer2to1:mu1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:15:fu
+a => selettore.IN0
+b => selettore.IN1
+b => multiplexer2to1:mu1.x
+cin => f.IN1
+cin => multiplexer2to1:mu1.y
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= multiplexer2to1:mu1.m
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:\G2:15:fu|multiplexer2to1:mu1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:fu_final
+a => selettore.IN0
+b => selettore.IN1
+b => multiplexer2to1:mu1.x
+cin => f.IN1
+cin => multiplexer2to1:mu1.y
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= multiplexer2to1:mu1.m
+
+
+|irrigation_system|ripple_carry_adder:adder|fulladder:fu_final|multiplexer2to1:mu1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+

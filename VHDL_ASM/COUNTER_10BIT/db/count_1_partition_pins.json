@@ -1,0 +1,61 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "Qs[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Qs[1]",
+					"strict" : false
+				},
+				{
+					"name" : "Qs[2]",
+					"strict" : false
+				},
+				{
+					"name" : "Qs[3]",
+					"strict" : false
+				},
+				{
+					"name" : "Qs[4]",
+					"strict" : false
+				},
+				{
+					"name" : "Qs[5]",
+					"strict" : false
+				},
+				{
+					"name" : "Qs[6]",
+					"strict" : false
+				},
+				{
+					"name" : "Qs[7]",
+					"strict" : false
+				},
+				{
+					"name" : "Qs[8]",
+					"strict" : false
+				},
+				{
+					"name" : "Qs[9]",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "enb",
+					"strict" : false
+				},
+				{
+					"name" : "clock",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

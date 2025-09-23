@@ -1,0 +1,927 @@
+Analysis & Synthesis report for irrigation_system
+Wed May  8 11:08:37 2024
+Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. State Machine - |irrigation_system|state
+ 10. General Register Statistics
+ 11. Registers Packed Into Inferred Megafunctions
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Source assignments for register_file:MEM_A|altsyncram:reg_file_rtl_0|altsyncram_m5k1:auto_generated
+ 14. Parameter Settings for User Entity Instance: count_1:count1
+ 15. Parameter Settings for User Entity Instance: count_1:count2
+ 16. Parameter Settings for User Entity Instance: flag_counter:counter_flag
+ 17. Parameter Settings for User Entity Instance: regn_8bit:reg1
+ 18. Parameter Settings for User Entity Instance: regn_8bit:reg2
+ 19. Parameter Settings for User Entity Instance: regn_8bit:reg3
+ 20. Parameter Settings for User Entity Instance: regn_8bit:reg4
+ 21. Parameter Settings for User Entity Instance: regn_16bit:reg40
+ 22. Parameter Settings for User Entity Instance: regn_16bit:reg20
+ 23. Parameter Settings for User Entity Instance: regn_16bit:regThr
+ 24. Parameter Settings for User Entity Instance: regn_16bit:regAvr
+ 25. Parameter Settings for User Entity Instance: regn_16bit:regHigh
+ 26. Parameter Settings for User Entity Instance: multiplexer2to1_10bit:mpx0
+ 27. Parameter Settings for User Entity Instance: multiplexer2to1_16bit:mpx1
+ 28. Parameter Settings for User Entity Instance: multiplexer2to1_16bit:mpx2
+ 29. Parameter Settings for User Entity Instance: multiplexer2to1_16bit:mpx3
+ 30. Parameter Settings for User Entity Instance: multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu1
+ 31. Parameter Settings for User Entity Instance: multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu2
+ 32. Parameter Settings for User Entity Instance: multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3
+ 33. Parameter Settings for User Entity Instance: multiplexer2to1_16bit:mpx5
+ 34. Parameter Settings for User Entity Instance: ripple_carry_adder:adder
+ 35. Parameter Settings for Inferred Entity Instance: register_file:MEM_A|altsyncram:reg_file_rtl_0
+ 36. altsyncram Parameter Settings by Entity Instance
+ 37. Port Connectivity Checks: "ripple_carry_adder:adder"
+ 38. Port Connectivity Checks: "multiplexer4to1_8bit:mpx4"
+ 39. Port Connectivity Checks: "register_file:MEM_B"
+ 40. Post-Synthesis Netlist Statistics for Top Partition
+ 41. Elapsed Time Per Partition
+ 42. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++---------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Wed May  8 11:08:37 2024          ;
+; Quartus Prime Version           ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
+; Revision Name                   ; irrigation_system                              ;
+; Top-level Entity Name           ; irrigation_system                              ;
+; Family                          ; Cyclone V                                      ;
+; Logic utilization (in ALMs)     ; N/A                                            ;
+; Total registers                 ; 8340                                           ;
+; Total pins                      ; 37                                             ;
+; Total virtual pins              ; 0                                              ;
+; Total block memory bits         ; 8,192                                          ;
+; Total DSP Blocks                ; 0                                              ;
+; Total HSSI RX PCSs              ; 0                                              ;
+; Total HSSI PMA RX Deserializers ; 0                                              ;
+; Total HSSI TX PCSs              ; 0                                              ;
+; Total HSSI PMA TX Serializers   ; 0                                              ;
+; Total PLLs                      ; 0                                              ;
+; Total DLLs                      ; 0                                              ;
++---------------------------------+------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; irrigation_system  ; irrigation_system  ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                   ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                                                               ; Library ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; t_flipflop.vhd                   ; yes             ; User VHDL File               ; C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/t_flipflop.vhd            ;         ;
+; regn_16bit.vhd                   ; yes             ; User VHDL File               ; C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/regn_16bit.vhd            ;         ;
+; regn_8bit.vhd                    ; yes             ; User VHDL File               ; C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/regn_8bit.vhd             ;         ;
+; register_file.vhd                ; yes             ; User VHDL File               ; C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/register_file.vhd         ;         ;
+; multiplexer4to1_8bit.vhd         ; yes             ; User VHDL File               ; C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/multiplexer4to1_8bit.vhd  ;         ;
+; multiplexer2to1_16bit.vhd        ; yes             ; User VHDL File               ; C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/multiplexer2to1_16bit.vhd ;         ;
+; multiplexer2to1_10bit.vhd        ; yes             ; User VHDL File               ; C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/multiplexer2to1_10bit.vhd ;         ;
+; multiplexer2to1_8bit.vhd         ; yes             ; User VHDL File               ; C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/multiplexer2to1_8bit.vhd  ;         ;
+; multiplexer2to1.vhd              ; yes             ; User VHDL File               ; C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/multiplexer2to1.vhd       ;         ;
+; fulladder.vhd                    ; yes             ; User VHDL File               ; C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/fulladder.vhd             ;         ;
+; flag_counter.vhd                 ; yes             ; User VHDL File               ; C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/flag_counter.vhd          ;         ;
+; count_1.vhd                      ; yes             ; User VHDL File               ; C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/count_1.vhd               ;         ;
+; irrigation_system.vhd            ; yes             ; User VHDL File               ; C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/irrigation_system.vhd     ;         ;
+; ripple_carry_adder.vhd           ; yes             ; User VHDL File               ; C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/ripple_carry_adder.vhd    ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altsyncram.tdf                                                                                   ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/stratix_ram_block.inc                                                                            ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/lpm_mux.inc                                                                                      ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/lpm_decode.inc                                                                                   ;         ;
+; aglobal221.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/aglobal221.inc                                                                                   ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/a_rdenreg.inc                                                                                    ;         ;
+; altrom.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altrom.inc                                                                                       ;         ;
+; altram.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altram.inc                                                                                       ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altdpram.inc                                                                                     ;         ;
+; db/altsyncram_m5k1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/db/altsyncram_m5k1.tdf    ;         ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                   ;
++---------------------------------------------+-----------------+
+; Resource                                    ; Usage           ;
++---------------------------------------------+-----------------+
+; Estimate of Logic utilization (ALMs needed) ; 5766            ;
+;                                             ;                 ;
+; Combinational ALUT usage for logic          ; 3986            ;
+;     -- 7 input functions                    ; 0               ;
+;     -- 6 input functions                    ; 2833            ;
+;     -- 5 input functions                    ; 34              ;
+;     -- 4 input functions                    ; 1069            ;
+;     -- <=3 input functions                  ; 50              ;
+;                                             ;                 ;
+; Dedicated logic registers                   ; 8340            ;
+;                                             ;                 ;
+; I/O pins                                    ; 37              ;
+; Total MLAB memory bits                      ; 0               ;
+; Total block memory bits                     ; 8192            ;
+;                                             ;                 ;
+; Total DSP Blocks                            ; 0               ;
+;                                             ;                 ;
+; Maximum fan-out node                        ; clock_asm~input ;
+; Maximum fan-out                             ; 8348            ;
+; Total fan-out                               ; 46871           ;
+; Average fan-out                             ; 3.78            ;
++---------------------------------------------+-----------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                         ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------+-----------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                             ; Entity Name           ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------+-----------------------+--------------+
+; |irrigation_system                        ; 3986 (46)           ; 8340 (19)                 ; 8192              ; 0          ; 37   ; 0            ; |irrigation_system                                                                              ; irrigation_system     ; work         ;
+;    |count_1:count1|                       ; 13 (3)              ; 10 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count1                                                               ; count_1               ; work         ;
+;       |t_flipflop:\G:1:tf|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count1|t_flipflop:\G:1:tf                                            ; t_flipflop            ; work         ;
+;       |t_flipflop:\G:2:tf|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count1|t_flipflop:\G:2:tf                                            ; t_flipflop            ; work         ;
+;       |t_flipflop:\G:3:tf|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count1|t_flipflop:\G:3:tf                                            ; t_flipflop            ; work         ;
+;       |t_flipflop:\G:4:tf|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count1|t_flipflop:\G:4:tf                                            ; t_flipflop            ; work         ;
+;       |t_flipflop:\G:5:tf|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count1|t_flipflop:\G:5:tf                                            ; t_flipflop            ; work         ;
+;       |t_flipflop:\G:6:tf|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count1|t_flipflop:\G:6:tf                                            ; t_flipflop            ; work         ;
+;       |t_flipflop:\G:7:tf|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count1|t_flipflop:\G:7:tf                                            ; t_flipflop            ; work         ;
+;       |t_flipflop:\G:8:tf|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count1|t_flipflop:\G:8:tf                                            ; t_flipflop            ; work         ;
+;       |t_flipflop:tf1|                    ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count1|t_flipflop:tf1                                                ; t_flipflop            ; work         ;
+;       |t_flipflop:tf_last|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count1|t_flipflop:tf_last                                            ; t_flipflop            ; work         ;
+;    |count_1:count2|                       ; 13 (3)              ; 10 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count2                                                               ; count_1               ; work         ;
+;       |t_flipflop:\G:1:tf|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count2|t_flipflop:\G:1:tf                                            ; t_flipflop            ; work         ;
+;       |t_flipflop:\G:2:tf|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count2|t_flipflop:\G:2:tf                                            ; t_flipflop            ; work         ;
+;       |t_flipflop:\G:3:tf|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count2|t_flipflop:\G:3:tf                                            ; t_flipflop            ; work         ;
+;       |t_flipflop:\G:4:tf|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count2|t_flipflop:\G:4:tf                                            ; t_flipflop            ; work         ;
+;       |t_flipflop:\G:5:tf|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count2|t_flipflop:\G:5:tf                                            ; t_flipflop            ; work         ;
+;       |t_flipflop:\G:6:tf|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count2|t_flipflop:\G:6:tf                                            ; t_flipflop            ; work         ;
+;       |t_flipflop:\G:7:tf|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count2|t_flipflop:\G:7:tf                                            ; t_flipflop            ; work         ;
+;       |t_flipflop:\G:8:tf|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count2|t_flipflop:\G:8:tf                                            ; t_flipflop            ; work         ;
+;       |t_flipflop:tf1|                    ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count2|t_flipflop:tf1                                                ; t_flipflop            ; work         ;
+;       |t_flipflop:tf_last|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|count_1:count2|t_flipflop:tf_last                                            ; t_flipflop            ; work         ;
+;    |flag_counter:counter_flag|            ; 4 (0)               ; 4 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|flag_counter:counter_flag                                                    ; flag_counter          ; work         ;
+;       |t_flipflop:\G:1:tf|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|flag_counter:counter_flag|t_flipflop:\G:1:tf                                 ; t_flipflop            ; work         ;
+;       |t_flipflop:\G:2:tf|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|flag_counter:counter_flag|t_flipflop:\G:2:tf                                 ; t_flipflop            ; work         ;
+;       |t_flipflop:tf1|                    ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|flag_counter:counter_flag|t_flipflop:tf1                                     ; t_flipflop            ; work         ;
+;       |t_flipflop:tf_last|                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|flag_counter:counter_flag|t_flipflop:tf_last                                 ; t_flipflop            ; work         ;
+;    |multiplexer2to1_10bit:mpx0|           ; 10 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_10bit:mpx0                                                   ; multiplexer2to1_10bit ; work         ;
+;       |multiplexer2to1:\G1:0:mux|         ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:0:mux                         ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:1:mux|         ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:1:mux                         ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:2:mux|         ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:2:mux                         ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:3:mux|         ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:3:mux                         ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:4:mux|         ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:4:mux                         ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:5:mux|         ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:5:mux                         ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:6:mux|         ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:6:mux                         ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:7:mux|         ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:7:mux                         ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:8:mux|         ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:8:mux                         ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:9:mux|         ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:9:mux                         ; multiplexer2to1       ; work         ;
+;    |multiplexer2to1_16bit:mpx1|           ; 12 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_16bit:mpx1                                                   ; multiplexer2to1_16bit ; work         ;
+;       |multiplexer2to1:\G1:10:mux|        ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:10:mux                        ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:11:mux|        ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:11:mux                        ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:12:mux|        ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:12:mux                        ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:14:mux|        ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:14:mux                        ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:15:mux|        ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:15:mux                        ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:1:mux|         ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:1:mux                         ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:2:mux|         ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:2:mux                         ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:4:mux|         ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:4:mux                         ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:5:mux|         ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:5:mux                         ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:6:mux|         ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:6:mux                         ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:7:mux|         ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:7:mux                         ; multiplexer2to1       ; work         ;
+;       |multiplexer2to1:\G1:9:mux|         ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer2to1_16bit:mpx1|multiplexer2to1:\G1:9:mux                         ; multiplexer2to1       ; work         ;
+;    |multiplexer4to1_8bit:mpx4|            ; 17 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer4to1_8bit:mpx4                                                    ; multiplexer4to1_8bit  ; work         ;
+;       |multiplexer2to1_8bit:mu3|          ; 17 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3                           ; multiplexer2to1_8bit  ; work         ;
+;          |multiplexer2to1:\G1:0:mux|      ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:0:mux ; multiplexer2to1       ; work         ;
+;          |multiplexer2to1:\G1:1:mux|      ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:1:mux ; multiplexer2to1       ; work         ;
+;          |multiplexer2to1:\G1:2:mux|      ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:2:mux ; multiplexer2to1       ; work         ;
+;          |multiplexer2to1:\G1:3:mux|      ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:3:mux ; multiplexer2to1       ; work         ;
+;          |multiplexer2to1:\G1:4:mux|      ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:4:mux ; multiplexer2to1       ; work         ;
+;          |multiplexer2to1:\G1:5:mux|      ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:5:mux ; multiplexer2to1       ; work         ;
+;          |multiplexer2to1:\G1:6:mux|      ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:6:mux ; multiplexer2to1       ; work         ;
+;          |multiplexer2to1:\G1:7:mux|      ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:7:mux ; multiplexer2to1       ; work         ;
+;    |register_file:MEM_A|                  ; 9 (9)               ; 1 (1)                     ; 8192              ; 0          ; 0    ; 0            ; |irrigation_system|register_file:MEM_A                                                          ; register_file         ; work         ;
+;       |altsyncram:reg_file_rtl_0|         ; 0 (0)               ; 0 (0)                     ; 8192              ; 0          ; 0    ; 0            ; |irrigation_system|register_file:MEM_A|altsyncram:reg_file_rtl_0                                ; altsyncram            ; work         ;
+;          |altsyncram_m5k1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 8192              ; 0          ; 0    ; 0            ; |irrigation_system|register_file:MEM_A|altsyncram:reg_file_rtl_0|altsyncram_m5k1:auto_generated ; altsyncram_m5k1       ; work         ;
+;    |register_file:MEM_B|                  ; 3832 (3832)         ; 8192 (8192)               ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|register_file:MEM_B                                                          ; register_file         ; work         ;
+;    |regn_16bit:reg20|                     ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|regn_16bit:reg20                                                             ; regn_16bit            ; work         ;
+;    |regn_16bit:reg40|                     ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|regn_16bit:reg40                                                             ; regn_16bit            ; work         ;
+;    |regn_16bit:regAvr|                    ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|regn_16bit:regAvr                                                            ; regn_16bit            ; work         ;
+;    |regn_16bit:regHigh|                   ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|regn_16bit:regHigh                                                           ; regn_16bit            ; work         ;
+;    |regn_16bit:regThr|                    ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|regn_16bit:regThr                                                            ; regn_16bit            ; work         ;
+;    |regn_8bit:reg2|                       ; 0 (0)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|regn_8bit:reg2                                                               ; regn_8bit             ; work         ;
+;    |regn_8bit:reg3|                       ; 0 (0)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|regn_8bit:reg3                                                               ; regn_8bit             ; work         ;
+;    |regn_8bit:reg4|                       ; 0 (0)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|regn_8bit:reg4                                                               ; regn_8bit             ; work         ;
+;    |ripple_carry_adder:adder|             ; 30 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder                                                     ; ripple_carry_adder    ; work         ;
+;       |fulladder:\G2:10:fu|               ; 2 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:10:fu                                 ; fulladder             ; work         ;
+;          |multiplexer2to1:mu1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:10:fu|multiplexer2to1:mu1             ; multiplexer2to1       ; work         ;
+;       |fulladder:\G2:11:fu|               ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:11:fu                                 ; fulladder             ; work         ;
+;       |fulladder:\G2:12:fu|               ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:12:fu                                 ; fulladder             ; work         ;
+;       |fulladder:\G2:13:fu|               ; 4 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:13:fu                                 ; fulladder             ; work         ;
+;          |multiplexer2to1:mu1|            ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:13:fu|multiplexer2to1:mu1             ; multiplexer2to1       ; work         ;
+;       |fulladder:\G2:14:fu|               ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:14:fu                                 ; fulladder             ; work         ;
+;       |fulladder:\G2:15:fu|               ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:15:fu                                 ; fulladder             ; work         ;
+;       |fulladder:\G2:1:fu|                ; 2 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:1:fu                                  ; fulladder             ; work         ;
+;          |multiplexer2to1:mu1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:1:fu|multiplexer2to1:mu1              ; multiplexer2to1       ; work         ;
+;       |fulladder:\G2:2:fu|                ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:2:fu                                  ; fulladder             ; work         ;
+;       |fulladder:\G2:3:fu|                ; 5 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:3:fu                                  ; fulladder             ; work         ;
+;          |multiplexer2to1:mu1|            ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:3:fu|multiplexer2to1:mu1              ; multiplexer2to1       ; work         ;
+;       |fulladder:\G2:4:fu|                ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:4:fu                                  ; fulladder             ; work         ;
+;       |fulladder:\G2:5:fu|                ; 2 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:5:fu                                  ; fulladder             ; work         ;
+;          |multiplexer2to1:mu1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:5:fu|multiplexer2to1:mu1              ; multiplexer2to1       ; work         ;
+;       |fulladder:\G2:6:fu|                ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:6:fu                                  ; fulladder             ; work         ;
+;       |fulladder:\G2:7:fu|                ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:7:fu                                  ; fulladder             ; work         ;
+;       |fulladder:\G2:8:fu|                ; 4 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:8:fu                                  ; fulladder             ; work         ;
+;          |multiplexer2to1:mu1|            ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:8:fu|multiplexer2to1:mu1              ; multiplexer2to1       ; work         ;
+;       |fulladder:\G2:9:fu|                ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:\G2:9:fu                                  ; fulladder             ; work         ;
+;       |fulladder:fu_final|                ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:fu_final                                  ; fulladder             ; work         ;
+;       |fulladder:fu_primo|                ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:fu_primo                                  ; fulladder             ; work         ;
+;          |multiplexer2to1:mu1|            ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |irrigation_system|ripple_carry_adder:adder|fulladder:fu_primo|multiplexer2to1:mu1              ; multiplexer2to1       ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------+-----------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                            ;
++-----------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; Name                                                                                    ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF  ;
++-----------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; register_file:MEM_A|altsyncram:reg_file_rtl_0|altsyncram_m5k1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 1024         ; 8            ; 1024         ; 8            ; 8192 ; None ;
++-----------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |irrigation_system|state                                                                                                                                                                                                                                                                                                      ;
++------------------+------------+----------------+----------------+----------------+----------------+---------------+----------------+-----------------+------------------+------------------+-----------------+--------------+---------------+----------------+----------------+----------------+----------------+---------------+-------------+
+; Name             ; state.DONE ; state.WR_MEMB4 ; state.WR_MEMB3 ; state.WR_MEMB2 ; state.WR_MEMB1 ; state.EN_FLAG ; state.RES_FLAG ; state.FLAG_COMP ; state.WR_HIGH_20 ; state.WR_HIGH_40 ; state.DATA_COMP ; state.WR_AVR ; state.EN_DATA ; state.RD_MEMA4 ; state.RD_MEMA3 ; state.RD_MEMA2 ; state.RD_MEMA1 ; state.WR_MEMA ; state.RESET ;
++------------------+------------+----------------+----------------+----------------+----------------+---------------+----------------+-----------------+------------------+------------------+-----------------+--------------+---------------+----------------+----------------+----------------+----------------+---------------+-------------+
+; state.RESET      ; 0          ; 0              ; 0              ; 0              ; 0              ; 0             ; 0              ; 0               ; 0                ; 0                ; 0               ; 0            ; 0             ; 0              ; 0              ; 0              ; 0              ; 0             ; 0           ;
+; state.WR_MEMA    ; 0          ; 0              ; 0              ; 0              ; 0              ; 0             ; 0              ; 0               ; 0                ; 0                ; 0               ; 0            ; 0             ; 0              ; 0              ; 0              ; 0              ; 1             ; 1           ;
+; state.RD_MEMA1   ; 0          ; 0              ; 0              ; 0              ; 0              ; 0             ; 0              ; 0               ; 0                ; 0                ; 0               ; 0            ; 0             ; 0              ; 0              ; 0              ; 1              ; 0             ; 1           ;
+; state.RD_MEMA2   ; 0          ; 0              ; 0              ; 0              ; 0              ; 0             ; 0              ; 0               ; 0                ; 0                ; 0               ; 0            ; 0             ; 0              ; 0              ; 1              ; 0              ; 0             ; 1           ;
+; state.RD_MEMA3   ; 0          ; 0              ; 0              ; 0              ; 0              ; 0             ; 0              ; 0               ; 0                ; 0                ; 0               ; 0            ; 0             ; 0              ; 1              ; 0              ; 0              ; 0             ; 1           ;
+; state.RD_MEMA4   ; 0          ; 0              ; 0              ; 0              ; 0              ; 0             ; 0              ; 0               ; 0                ; 0                ; 0               ; 0            ; 0             ; 1              ; 0              ; 0              ; 0              ; 0             ; 1           ;
+; state.EN_DATA    ; 0          ; 0              ; 0              ; 0              ; 0              ; 0             ; 0              ; 0               ; 0                ; 0                ; 0               ; 0            ; 1             ; 0              ; 0              ; 0              ; 0              ; 0             ; 1           ;
+; state.WR_AVR     ; 0          ; 0              ; 0              ; 0              ; 0              ; 0             ; 0              ; 0               ; 0                ; 0                ; 0               ; 1            ; 0             ; 0              ; 0              ; 0              ; 0              ; 0             ; 1           ;
+; state.DATA_COMP  ; 0          ; 0              ; 0              ; 0              ; 0              ; 0             ; 0              ; 0               ; 0                ; 0                ; 1               ; 0            ; 0             ; 0              ; 0              ; 0              ; 0              ; 0             ; 1           ;
+; state.WR_HIGH_40 ; 0          ; 0              ; 0              ; 0              ; 0              ; 0             ; 0              ; 0               ; 0                ; 1                ; 0               ; 0            ; 0             ; 0              ; 0              ; 0              ; 0              ; 0             ; 1           ;
+; state.WR_HIGH_20 ; 0          ; 0              ; 0              ; 0              ; 0              ; 0             ; 0              ; 0               ; 1                ; 0                ; 0               ; 0            ; 0             ; 0              ; 0              ; 0              ; 0              ; 0             ; 1           ;
+; state.FLAG_COMP  ; 0          ; 0              ; 0              ; 0              ; 0              ; 0             ; 0              ; 1               ; 0                ; 0                ; 0               ; 0            ; 0             ; 0              ; 0              ; 0              ; 0              ; 0             ; 1           ;
+; state.RES_FLAG   ; 0          ; 0              ; 0              ; 0              ; 0              ; 0             ; 1              ; 0               ; 0                ; 0                ; 0               ; 0            ; 0             ; 0              ; 0              ; 0              ; 0              ; 0             ; 1           ;
+; state.EN_FLAG    ; 0          ; 0              ; 0              ; 0              ; 0              ; 1             ; 0              ; 0               ; 0                ; 0                ; 0               ; 0            ; 0             ; 0              ; 0              ; 0              ; 0              ; 0             ; 1           ;
+; state.WR_MEMB1   ; 0          ; 0              ; 0              ; 0              ; 1              ; 0             ; 0              ; 0               ; 0                ; 0                ; 0               ; 0            ; 0             ; 0              ; 0              ; 0              ; 0              ; 0             ; 1           ;
+; state.WR_MEMB2   ; 0          ; 0              ; 0              ; 1              ; 0              ; 0             ; 0              ; 0               ; 0                ; 0                ; 0               ; 0            ; 0             ; 0              ; 0              ; 0              ; 0              ; 0             ; 1           ;
+; state.WR_MEMB3   ; 0          ; 0              ; 1              ; 0              ; 0              ; 0             ; 0              ; 0               ; 0                ; 0                ; 0               ; 0            ; 0             ; 0              ; 0              ; 0              ; 0              ; 0             ; 1           ;
+; state.WR_MEMB4   ; 0          ; 1              ; 0              ; 0              ; 0              ; 0             ; 0              ; 0               ; 0                ; 0                ; 0               ; 0            ; 0             ; 0              ; 0              ; 0              ; 0              ; 0             ; 1           ;
+; state.DONE       ; 1          ; 0              ; 0              ; 0              ; 0              ; 0             ; 0              ; 0               ; 0                ; 0                ; 0               ; 0            ; 0             ; 0              ; 0              ; 0              ; 0              ; 0             ; 1           ;
++------------------+------------+----------------+----------------+----------------+----------------+---------------+----------------+-----------------+------------------+------------------+-----------------+--------------+---------------+----------------+----------------+----------------+----------------+---------------+-------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 8340  ;
+; Number of registers using Synchronous Clear  ; 4     ;
+; Number of registers using Synchronous Load   ; 16    ;
+; Number of registers using Asynchronous Clear ; 129   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 8296  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                       ;
++------------------------+------------------------------------+------+
+; Register Name          ; Megafunction                       ; Type ;
++------------------------+------------------------------------+------+
+; regn_8bit:reg1|Q[0..7] ; register_file:MEM_A|reg_file_rtl_0 ; RAM  ;
++------------------------+------------------------------------+------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |irrigation_system|state                                                                          ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |irrigation_system|multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:5:mux|m ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Source assignments for register_file:MEM_A|altsyncram:reg_file_rtl_0|altsyncram_m5k1:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------------+
+; Assignment                      ; Value              ; From ; To                                    ;
++---------------------------------+--------------------+------+---------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                     ;
++---------------------------------+--------------------+------+---------------------------------------+
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: count_1:count1 ;
++----------------+-------+------------------------------------+
+; Parameter Name ; Value ; Type                               ;
++----------------+-------+------------------------------------+
+; n              ; 10    ; Signed Integer                     ;
++----------------+-------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: count_1:count2 ;
++----------------+-------+------------------------------------+
+; Parameter Name ; Value ; Type                               ;
++----------------+-------+------------------------------------+
+; n              ; 10    ; Signed Integer                     ;
++----------------+-------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: flag_counter:counter_flag ;
++----------------+-------+-----------------------------------------------+
+; Parameter Name ; Value ; Type                                          ;
++----------------+-------+-----------------------------------------------+
+; n              ; 4     ; Signed Integer                                ;
++----------------+-------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: regn_8bit:reg1 ;
++----------------+-------+------------------------------------+
+; Parameter Name ; Value ; Type                               ;
++----------------+-------+------------------------------------+
+; n              ; 8     ; Signed Integer                     ;
++----------------+-------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: regn_8bit:reg2 ;
++----------------+-------+------------------------------------+
+; Parameter Name ; Value ; Type                               ;
++----------------+-------+------------------------------------+
+; n              ; 8     ; Signed Integer                     ;
++----------------+-------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: regn_8bit:reg3 ;
++----------------+-------+------------------------------------+
+; Parameter Name ; Value ; Type                               ;
++----------------+-------+------------------------------------+
+; n              ; 8     ; Signed Integer                     ;
++----------------+-------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: regn_8bit:reg4 ;
++----------------+-------+------------------------------------+
+; Parameter Name ; Value ; Type                               ;
++----------------+-------+------------------------------------+
+; n              ; 8     ; Signed Integer                     ;
++----------------+-------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: regn_16bit:reg40 ;
++----------------+-------+--------------------------------------+
+; Parameter Name ; Value ; Type                                 ;
++----------------+-------+--------------------------------------+
+; n              ; 16    ; Signed Integer                       ;
++----------------+-------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: regn_16bit:reg20 ;
++----------------+-------+--------------------------------------+
+; Parameter Name ; Value ; Type                                 ;
++----------------+-------+--------------------------------------+
+; n              ; 16    ; Signed Integer                       ;
++----------------+-------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: regn_16bit:regThr ;
++----------------+-------+---------------------------------------+
+; Parameter Name ; Value ; Type                                  ;
++----------------+-------+---------------------------------------+
+; n              ; 16    ; Signed Integer                        ;
++----------------+-------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: regn_16bit:regAvr ;
++----------------+-------+---------------------------------------+
+; Parameter Name ; Value ; Type                                  ;
++----------------+-------+---------------------------------------+
+; n              ; 16    ; Signed Integer                        ;
++----------------+-------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: regn_16bit:regHigh ;
++----------------+-------+----------------------------------------+
+; Parameter Name ; Value ; Type                                   ;
++----------------+-------+----------------------------------------+
+; n              ; 16    ; Signed Integer                         ;
++----------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: multiplexer2to1_10bit:mpx0 ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; n              ; 10    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: multiplexer2to1_16bit:mpx1 ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; n              ; 16    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: multiplexer2to1_16bit:mpx2 ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; n              ; 16    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: multiplexer2to1_16bit:mpx3 ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; n              ; 16    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu1 ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; n              ; 8     ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu2 ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; n              ; 8     ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu3 ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; n              ; 8     ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: multiplexer2to1_16bit:mpx5 ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; n              ; 16    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ripple_carry_adder:adder ;
++----------------+-------+----------------------------------------------+
+; Parameter Name ; Value ; Type                                         ;
++----------------+-------+----------------------------------------------+
+; n              ; 16    ; Signed Integer                               ;
++----------------+-------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: register_file:MEM_A|altsyncram:reg_file_rtl_0 ;
++------------------------------------+----------------------+------------------------------------+
+; Parameter Name                     ; Value                ; Type                               ;
++------------------------------------+----------------------+------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                            ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                         ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                       ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                       ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                     ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                            ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                            ;
+; WIDTH_A                            ; 8                    ; Untyped                            ;
+; WIDTHAD_A                          ; 10                   ; Untyped                            ;
+; NUMWORDS_A                         ; 1024                 ; Untyped                            ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                            ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                            ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                            ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                            ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                            ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                            ;
+; WIDTH_B                            ; 8                    ; Untyped                            ;
+; WIDTHAD_B                          ; 10                   ; Untyped                            ;
+; NUMWORDS_B                         ; 1024                 ; Untyped                            ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                            ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                            ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                            ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                            ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                            ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                            ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                            ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                            ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                            ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                            ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                            ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                            ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                            ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                            ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                            ;
+; BYTE_SIZE                          ; 8                    ; Untyped                            ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                            ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                            ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                            ;
+; INIT_FILE                          ; UNUSED               ; Untyped                            ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                            ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                            ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                            ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                            ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                            ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                            ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                            ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                            ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                            ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                            ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                            ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                            ;
+; CBXI_PARAMETER                     ; altsyncram_m5k1      ; Untyped                            ;
++------------------------------------+----------------------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                          ;
++-------------------------------------------+-----------------------------------------------+
+; Name                                      ; Value                                         ;
++-------------------------------------------+-----------------------------------------------+
+; Number of entity instances                ; 1                                             ;
+; Entity Instance                           ; register_file:MEM_A|altsyncram:reg_file_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                     ;
+;     -- WIDTH_A                            ; 8                                             ;
+;     -- NUMWORDS_A                         ; 1024                                          ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                  ;
+;     -- WIDTH_B                            ; 8                                             ;
+;     -- NUMWORDS_B                         ; 1024                                          ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                        ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                  ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                          ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                     ;
++-------------------------------------------+-----------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ripple_carry_adder:adder"                                                               ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; c_out    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; s_out[0] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "multiplexer4to1_8bit:mpx4" ;
++------+-------+----------+-----------------------------+
+; Port ; Type  ; Severity ; Details                     ;
++------+-------+----------+-----------------------------+
+; u    ; Input ; Info     ; Stuck at GND                ;
++------+-------+----------+-----------------------------+
+
+
++-------------------------------------------------+
+; Port Connectivity Checks: "register_file:MEM_B" ;
++------+-------+----------+-----------------------+
+; Port ; Type  ; Severity ; Details               ;
++------+-------+----------+-----------------------+
+; rd   ; Input ; Info     ; Stuck at GND          ;
++------+-------+----------+-----------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 8340                        ;
+;     CLR               ; 25                          ;
+;     ENA               ; 8192                        ;
+;     ENA CLR           ; 88                          ;
+;     ENA CLR SLD       ; 16                          ;
+;     SCLR              ; 4                           ;
+;     plain             ; 15                          ;
+; arriav_lcell_comb     ; 3986                        ;
+;     normal            ; 3986                        ;
+;         2 data inputs ; 23                          ;
+;         3 data inputs ; 27                          ;
+;         4 data inputs ; 1069                        ;
+;         5 data inputs ; 34                          ;
+;         6 data inputs ; 2833                        ;
+; boundary_port         ; 37                          ;
+; stratixv_ram_block    ; 8                           ;
+;                       ;                             ;
+; Max LUT depth         ; 8.00                        ;
+; Average LUT depth     ; 5.00                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:07     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+    Info: Processing started: Wed May  8 11:08:20 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off irrigation_system -c irrigation_system
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file t_flipflop.vhd
+    Info (12022): Found design unit 1: t_flipflop-behavior File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/t_flipflop.vhd Line: 14
+    Info (12023): Found entity 1: t_flipflop File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/t_flipflop.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file regn_16bit.vhd
+    Info (12022): Found design unit 1: regn_16bit-Behavior File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/regn_16bit.vhd Line: 19
+    Info (12023): Found entity 1: regn_16bit File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/regn_16bit.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file regn_8bit.vhd
+    Info (12022): Found design unit 1: regn_8bit-Behavior File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/regn_8bit.vhd Line: 19
+    Info (12023): Found entity 1: regn_8bit File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/regn_8bit.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file register_file.vhd
+    Info (12022): Found design unit 1: register_file-behavior File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/register_file.vhd Line: 14
+    Info (12023): Found entity 1: register_file File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/register_file.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file multiplexer4to1_8bit.vhd
+    Info (12022): Found design unit 1: multiplexer4to1_8bit-behavior File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/multiplexer4to1_8bit.vhd Line: 20
+    Info (12023): Found entity 1: multiplexer4to1_8bit File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/multiplexer4to1_8bit.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file multiplexer2to1_16bit.vhd
+    Info (12022): Found design unit 1: multiplexer2to1_16bit-behavior File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/multiplexer2to1_16bit.vhd Line: 19
+    Info (12023): Found entity 1: multiplexer2to1_16bit File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/multiplexer2to1_16bit.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file multiplexer2to1_10bit.vhd
+    Info (12022): Found design unit 1: multiplexer2to1_10bit-behavior File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/multiplexer2to1_10bit.vhd Line: 19
+    Info (12023): Found entity 1: multiplexer2to1_10bit File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/multiplexer2to1_10bit.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file multiplexer2to1_8bit.vhd
+    Info (12022): Found design unit 1: multiplexer2to1_8bit-behavior File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/multiplexer2to1_8bit.vhd Line: 20
+    Info (12023): Found entity 1: multiplexer2to1_8bit File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/multiplexer2to1_8bit.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file multiplexer2to1.vhd
+    Info (12022): Found design unit 1: multiplexer2to1-behavior File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/multiplexer2to1.vhd Line: 16
+    Info (12023): Found entity 1: multiplexer2to1 File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/multiplexer2to1.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file fulladder.vhd
+    Info (12022): Found design unit 1: fulladder-behavior File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/fulladder.vhd Line: 12
+    Info (12023): Found entity 1: fulladder File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/fulladder.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file flag_counter.vhd
+    Info (12022): Found design unit 1: flag_counter-behavir File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/flag_counter.vhd Line: 17
+    Info (12023): Found entity 1: flag_counter File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/flag_counter.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file count_1.vhd
+    Info (12022): Found design unit 1: count_1-behavir File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/count_1.vhd Line: 18
+    Info (12023): Found entity 1: count_1 File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/count_1.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file irrigation_system.vhd
+    Info (12022): Found design unit 1: irrigation_system-behavior File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/irrigation_system.vhd Line: 26
+    Info (12023): Found entity 1: irrigation_system File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/irrigation_system.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file ripple_carry_adder.vhd
+    Info (12022): Found design unit 1: ripple_carry_adder-behavior File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/ripple_carry_adder.vhd Line: 20
+    Info (12023): Found entity 1: ripple_carry_adder File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/ripple_carry_adder.vhd Line: 7
+Info (12127): Elaborating entity "irrigation_system" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at irrigation_system.vhd(140): object "carry_out" assigned a value but never read File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/irrigation_system.vhd Line: 140
+Info (12128): Elaborating entity "count_1" for hierarchy "count_1:count1" File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/irrigation_system.vhd Line: 360
+Info (12128): Elaborating entity "t_flipflop" for hierarchy "count_1:count1|t_flipflop:tf1" File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/count_1.vhd Line: 39
+Info (12128): Elaborating entity "flag_counter" for hierarchy "flag_counter:counter_flag" File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/irrigation_system.vhd Line: 370
+Info (12128): Elaborating entity "register_file" for hierarchy "register_file:MEM_A" File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/irrigation_system.vhd Line: 374
+Warning (10492): VHDL Process Statement warning at register_file.vhd(45): signal "cs" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/register_file.vhd Line: 45
+Warning (10492): VHDL Process Statement warning at register_file.vhd(52): signal "reg_file" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/register_file.vhd Line: 52
+Info (12128): Elaborating entity "regn_8bit" for hierarchy "regn_8bit:reg1" File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/irrigation_system.vhd Line: 386
+Info (12128): Elaborating entity "regn_16bit" for hierarchy "regn_16bit:reg40" File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/irrigation_system.vhd Line: 395
+Info (12128): Elaborating entity "multiplexer2to1_10bit" for hierarchy "multiplexer2to1_10bit:mpx0" File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/irrigation_system.vhd Line: 404
+Info (12128): Elaborating entity "multiplexer2to1" for hierarchy "multiplexer2to1_10bit:mpx0|multiplexer2to1:\G1:0:mux" File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/multiplexer2to1_10bit.vhd Line: 36
+Info (12128): Elaborating entity "multiplexer2to1_16bit" for hierarchy "multiplexer2to1_16bit:mpx1" File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/irrigation_system.vhd Line: 406
+Info (12128): Elaborating entity "multiplexer4to1_8bit" for hierarchy "multiplexer4to1_8bit:mpx4" File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/irrigation_system.vhd Line: 414
+Info (12128): Elaborating entity "multiplexer2to1_8bit" for hierarchy "multiplexer4to1_8bit:mpx4|multiplexer2to1_8bit:mu1" File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/multiplexer4to1_8bit.vhd Line: 43
+Info (12128): Elaborating entity "ripple_carry_adder" for hierarchy "ripple_carry_adder:adder" File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/irrigation_system.vhd Line: 430
+Info (12128): Elaborating entity "fulladder" for hierarchy "ripple_carry_adder:adder|fulladder:fu_primo" File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/ripple_carry_adder.vhd Line: 39
+Warning (276027): Inferred dual-clock RAM node "register_file:MEM_A|reg_file_rtl_0" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "register_file:MEM_B|reg_file" is uninferred due to asynchronous read logic File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/register_file.vhd Line: 18
+Info (19000): Inferred 1 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "register_file:MEM_A|reg_file_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTHAD_A set to 10
+        Info (286033): Parameter NUMWORDS_A set to 1024
+        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTHAD_B set to 10
+        Info (286033): Parameter NUMWORDS_B set to 1024
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK1
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+Info (12130): Elaborated megafunction instantiation "register_file:MEM_A|altsyncram:reg_file_rtl_0"
+Info (12133): Instantiated megafunction "register_file:MEM_A|altsyncram:reg_file_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "8"
+    Info (12134): Parameter "WIDTHAD_A" = "10"
+    Info (12134): Parameter "NUMWORDS_A" = "1024"
+    Info (12134): Parameter "WIDTH_B" = "8"
+    Info (12134): Parameter "WIDTHAD_B" = "10"
+    Info (12134): Parameter "NUMWORDS_B" = "1024"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK1"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_m5k1.tdf
+    Info (12023): Found entity 1: altsyncram_m5k1 File: C:/Users/march/OneDrive - Politecnico di Torino/Elettronica dei sistemi digitali/Laboratorio/LAB6/VHDL_ASM/IRRIGATION SYSTEM ASM/db/altsyncram_m5k1.tdf Line: 28
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 12312 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 27 input pins
+    Info (21059): Implemented 10 output pins
+    Info (21061): Implemented 12267 logic cells
+    Info (21064): Implemented 8 RAM segments
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 4926 megabytes
+    Info: Processing ended: Wed May  8 11:08:37 2024
+    Info: Elapsed time: 00:00:17
+    Info: Total CPU time (on all processors): 00:00:15
+
+

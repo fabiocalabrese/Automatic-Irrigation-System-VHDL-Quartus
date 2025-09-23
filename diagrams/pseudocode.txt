@@ -1,0 +1,53 @@
+cnt_1 = 0
+
+for cnt_1 in 0 to 1023 
+	
+	MEM_A(cnt_1) = DATA_EXT
+	
+	MEM_B(cnt_1) = 0
+
+end for
+
+cnt_1 = 0
+cnt_2 = 0
+flag_counter = 0
+IRRIGATION_ALARM = 0
+
+while cnt_2 < 1023  
+
+	data_sample_20 = MEM_A(cnt_1 + 1)&MEM_A(cnt_add)
+	data_sample_40 = MEM_A(cnt_1 + 3)&MEM_A(cnt_1 + 2)
+	
+	average = (data_sample_20 + data_sample_40)/2
+
+	MEM_B(cnt_2) = average(7 downto 0)
+	MEM_B(cnt_2 + 1) = average(15 downto 8)
+	
+	IF data_sample_40 >= data_sample_20
+
+		highest == data_sample_40
+	
+	ELSE 
+		highest == data_sample_20
+
+	MEM_B(cnt_2 + 2) = highest(7 downto 0)
+	MEM_B(cnt_2 + 3) = highest(15 downto 8)
+
+	IF average > SOGLIA
+
+		IF flag_counter < 10
+
+			flag_counter += 1
+		
+			IF flag_counter = 10
+
+				IRRIGATION_ALARM = 1
+		
+	ELSE
+
+		flag_counter = 0	
+	
+	cnt_1 += 4
+	cnt_2 += 4
+
+end for

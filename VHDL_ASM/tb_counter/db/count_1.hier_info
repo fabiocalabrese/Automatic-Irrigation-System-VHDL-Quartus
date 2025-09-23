@@ -1,0 +1,105 @@
+|count_1
+enb => and_link[0].IN1
+enb => t_flipflop:tf1.T
+clock => t_flipflop:tf1.clk
+clock => t_flipflop:G:1:tf.clk
+clock => t_flipflop:G:2:tf.clk
+clock => t_flipflop:G:3:tf.clk
+clock => t_flipflop:G:4:tf.clk
+clock => t_flipflop:G:5:tf.clk
+clock => t_flipflop:G:6:tf.clk
+clock => t_flipflop:G:7:tf.clk
+clock => t_flipflop:G:8:tf.clk
+clock => t_flipflop:tf_last.clk
+reset_c => t_flipflop:tf1.reset
+reset_c => t_flipflop:G:1:tf.reset
+reset_c => t_flipflop:G:2:tf.reset
+reset_c => t_flipflop:G:3:tf.reset
+reset_c => t_flipflop:G:4:tf.reset
+reset_c => t_flipflop:G:5:tf.reset
+reset_c => t_flipflop:G:6:tf.reset
+reset_c => t_flipflop:G:7:tf.reset
+reset_c => t_flipflop:G:8:tf.reset
+reset_c => t_flipflop:tf_last.reset
+Qs[0] <= t_flipflop:tf1.Q
+Qs[1] <= t_flipflop:G:1:tf.Q
+Qs[2] <= t_flipflop:G:2:tf.Q
+Qs[3] <= t_flipflop:G:3:tf.Q
+Qs[4] <= t_flipflop:G:4:tf.Q
+Qs[5] <= t_flipflop:G:5:tf.Q
+Qs[6] <= t_flipflop:G:6:tf.Q
+Qs[7] <= t_flipflop:G:7:tf.Q
+Qs[8] <= t_flipflop:G:8:tf.Q
+Qs[9] <= t_flipflop:tf_last.Q
+
+
+|count_1|t_flipflop:tf1
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|count_1|t_flipflop:\G:1:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|count_1|t_flipflop:\G:2:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|count_1|t_flipflop:\G:3:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|count_1|t_flipflop:\G:4:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|count_1|t_flipflop:\G:5:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|count_1|t_flipflop:\G:6:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|count_1|t_flipflop:\G:7:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|count_1|t_flipflop:\G:8:tf
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|count_1|t_flipflop:tf_last
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+reset => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

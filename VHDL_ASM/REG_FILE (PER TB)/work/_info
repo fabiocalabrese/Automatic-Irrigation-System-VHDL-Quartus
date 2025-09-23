@@ -1,0 +1,92 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA/18.1
+Eregister_file
+Z0 w1714675014
+Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z4 dC:/Users/fabio/Politecnico di Torino/HELOU MARC - Laboratorio/LAB6/VHDL_ASM/REG_FILE (PER TB)
+Z5 8C:\Users\fabio\Politecnico di Torino\HELOU MARC - Laboratorio\LAB6\VHDL_ASM\REG_FILE (PER TB)\register_file.vhd
+Z6 FC:\Users\fabio\Politecnico di Torino\HELOU MARC - Laboratorio\LAB6\VHDL_ASM\REG_FILE (PER TB)\register_file.vhd
+l0
+L5
+Vai^<i?RjQ=J8_IfoejXR]0
+!s100 ;?iCREi]e_;ga[iTW8G`<1
+Z7 OV;C;10.5b;63
+32
+Z8 !s110 1714675020
+!i10b 1
+Z9 !s108 1714675020.000000
+Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\fabio\Politecnico di Torino\HELOU MARC - Laboratorio\LAB6\VHDL_ASM\REG_FILE (PER TB)\register_file.vhd|
+Z11 !s107 C:\Users\fabio\Politecnico di Torino\HELOU MARC - Laboratorio\LAB6\VHDL_ASM\REG_FILE (PER TB)\register_file.vhd|
+!i113 1
+Z12 o-work work -2002 -explicit
+Z13 tExplicit 1 CvgOpt 0
+Abehavior
+R1
+R2
+R3
+DEx4 work 13 register_file 0 22 ai^<i?RjQ=J8_IfoejXR]0
+l20
+L14
+VARbIOM<VR6Qn`HTL0WJh41
+!s100 ^DoH[AnaM32A8B]QP=OUE0
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Etbregister_file
+Z14 w1714720296
+R1
+R2
+R3
+R4
+Z15 8C:\Users\fabio\Politecnico di Torino\HELOU MARC - Laboratorio\LAB6\VHDL_ASM\REG_FILE (PER TB)\tbregister_file.vhd
+Z16 FC:\Users\fabio\Politecnico di Torino\HELOU MARC - Laboratorio\LAB6\VHDL_ASM\REG_FILE (PER TB)\tbregister_file.vhd
+l0
+L6
+VKgR]kYi`I1FE07ORNS9`X3
+!s100 3V:i>F_jF4876Oj9lnb1l0
+R7
+32
+Z17 !s110 1714720307
+!i10b 1
+Z18 !s108 1714720306.000000
+Z19 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\fabio\Politecnico di Torino\HELOU MARC - Laboratorio\LAB6\VHDL_ASM\REG_FILE (PER TB)\tbregister_file.vhd|
+Z20 !s107 C:\Users\fabio\Politecnico di Torino\HELOU MARC - Laboratorio\LAB6\VHDL_ASM\REG_FILE (PER TB)\tbregister_file.vhd|
+!i113 1
+R12
+R13
+Abehavior
+R1
+R2
+R3
+Z21 DEx4 work 15 tbregister_file 0 22 KgR]kYi`I1FE07ORNS9`X3
+l29
+L9
+VeXaZD:?HPTCc]028O8E8T1
+!s100 ];G8E]8JLW^dT96meKc0e3
+R7
+32
+R17
+!i10b 1
+R18
+R19
+R20
+!i113 1
+R12
+R13

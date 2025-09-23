@@ -1,0 +1,55 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+-- Il flag_counter sarà utilizzato per dare il segnale di allarme.
+
+ENTITY flag_counter IS
+  GENERIC ( n : INTEGER := 4);
+  PORT ( 
+         enb : IN STD_LOGIC;
+			clock,reset_c : IN STD_LOGIC;
+			Qs : OUT STD_LOGIC_VECTOR(n-1 DOWNTO 0)
+			
+			);
+END flag_counter;
+
+
+ARCHITECTURE behavir OF flag_counter IS
+
+ COMPONENT t_flipflop 
+ 
+  PORT ( 
+         T : IN STD_LOGIC;
+			clk,reset : IN STD_LOGIC;
+			Q : OUT STD_LOGIC
+			
+			);
+			
+ END COMPONENT;
+
+ 
+ SIGNAL qsignal : STD_LOGIC_VECTOR(n-1 DOWNTO 0);
+ SIGNAL and_link : STD_LOGIC_VECTOR(n-2 DOWNTO 0);
+ 
+  BEGIN
+  
+  -- Il contatore è realizzato con  4 t-flipflop ( a noi interessa contare fino a 10 ).
+  
+	tf1 : t_flipflop PORT MAP ( T => enb, clk => clock, reset => reset_c, Q => qsignal(0));
+  	
+	  and_link(0) <= enb AND qsignal(0);
+	
+	
+	G : FOR i IN 1 TO n-2 GENERATE 
+     
+	  tf : t_flipflop PORT MAP ( T => and_link(i-1), clk => clock, reset => reset_c, Q => qsignal(i));
+	  and_link(i) <= and_link(i-1) AND qsignal(i);
+	  
+	  END GENERATE;
+	  
+	 tf_last : t_flipflop PORT MAP ( T => and_link(n-2) , clk => clock, reset => reset_c, Q => qsignal(n-1));
+	 
+	 Qs <= qsignal;
+	 
+END ARCHITECTURE; 
+  

@@ -1,0 +1,74 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+
+
+ENTITY tbregister_file IS
+END tbregister_file;
+
+ARCHITECTURE behavior OF tbregister_file IS
+
+   COMPONENT register_file
+	  
+	  PORT( data_in : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+	        address : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+			  cs,wr_n,rd,clock: IN STD_LOGIC;
+			  data_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
+   
+	END COMPONENT;			 
+	
+
+	
+ SIGNAL CLK, CS : STD_LOGIC;
+SIGNAL WR_N, RD : STD_LOGIC := '0';
+ SIGNAL datain : STD_LOGIC_VECTOR(7 DOWNTO 0);
+ SIGNAL add : STD_LOGIC_VECTOR(2 DOWNTO 0) := "000" ;
+ SIGNAL output_data : STD_LOGIC_VECTOR(7 DOWNTO 0);
+ 
+ 
+ BEGIN 
+   
+ 
+	CS <= '1';
+
+ 
+  PROCESS
+  
+  BEGIN
+  
+     CLK <= '0';
+	  WAIT FOR 1 ns;
+	  CLK <= '1';
+	  WAIT FOR 1 ns;
+ 
+  END PROCESS;
+	
+
+  PROCESS
+   BEGIN  
+	 
+	 datain <= (others => '1');
+	 WAIT FOR 1020 ps;
+	 datain <= "00000001";
+	 WAIT FOR 6 ns;
+	 datain <= "00000000";
+	 WAIT;
+	END PROCESS;
+
+	
+  process(clk)
+  begin
+   if rising_edge(clk) then 
+      add <= std_logic_vector(unsigned(add) + 1);
+		if add = "111" THEN
+		   add <= "000";
+         Wr_n <= '1';
+         RD <= '1';
+		end if;
+    end if;
+  end process;
+	
+	
+dut : register_file PORT MAP ( data_in => datain, address => add, cs => cs, wr_n => wr_n, rd => rd, clock => clk, data_out => output_data);
+
+END ARCHITECTURE;

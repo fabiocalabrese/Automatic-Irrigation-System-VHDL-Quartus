@@ -1,0 +1,19 @@
+{C:/Users/fabio/Politecnico di Torino/HELOU MARC - Laboratorio/LAB6/VHDL_ASM/REG_FILE (PER TB)/tbregister_file.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\fabio\Politecnico di Torino\HELOU MARC - Laboratorio\LAB6\VHDL_ASM\REG_FILE (PER TB)\tbregister_file.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity tbregister_file
+-- Compiling architecture behavior of tbregister_file
+
+} {} {}} {C:/Users/fabio/Politecnico di Torino/HELOU MARC - Laboratorio/LAB6/VHDL_ASM/REG_FILE (PER TB)/register_file.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\fabio\Politecnico di Torino\HELOU MARC - Laboratorio\LAB6\VHDL_ASM\REG_FILE (PER TB)\register_file.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity register_file
+-- Compiling architecture behavior of register_file
+
+} {} {}}

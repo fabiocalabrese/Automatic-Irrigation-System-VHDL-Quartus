@@ -1,0 +1,344 @@
+|multiplexer4to1_8bit
+u[0] => multiplexer2to1_8bit:mu1.x[0]
+u[1] => multiplexer2to1_8bit:mu1.x[1]
+u[2] => multiplexer2to1_8bit:mu1.x[2]
+u[3] => multiplexer2to1_8bit:mu1.x[3]
+u[4] => multiplexer2to1_8bit:mu1.x[4]
+u[5] => multiplexer2to1_8bit:mu1.x[5]
+u[6] => multiplexer2to1_8bit:mu1.x[6]
+u[7] => multiplexer2to1_8bit:mu1.x[7]
+v[0] => multiplexer2to1_8bit:mu1.y[0]
+v[1] => multiplexer2to1_8bit:mu1.y[1]
+v[2] => multiplexer2to1_8bit:mu1.y[2]
+v[3] => multiplexer2to1_8bit:mu1.y[3]
+v[4] => multiplexer2to1_8bit:mu1.y[4]
+v[5] => multiplexer2to1_8bit:mu1.y[5]
+v[6] => multiplexer2to1_8bit:mu1.y[6]
+v[7] => multiplexer2to1_8bit:mu1.y[7]
+w[0] => multiplexer2to1_8bit:mu2.x[0]
+w[1] => multiplexer2to1_8bit:mu2.x[1]
+w[2] => multiplexer2to1_8bit:mu2.x[2]
+w[3] => multiplexer2to1_8bit:mu2.x[3]
+w[4] => multiplexer2to1_8bit:mu2.x[4]
+w[5] => multiplexer2to1_8bit:mu2.x[5]
+w[6] => multiplexer2to1_8bit:mu2.x[6]
+w[7] => multiplexer2to1_8bit:mu2.x[7]
+x[0] => multiplexer2to1_8bit:mu2.y[0]
+x[1] => multiplexer2to1_8bit:mu2.y[1]
+x[2] => multiplexer2to1_8bit:mu2.y[2]
+x[3] => multiplexer2to1_8bit:mu2.y[3]
+x[4] => multiplexer2to1_8bit:mu2.y[4]
+x[5] => multiplexer2to1_8bit:mu2.y[5]
+x[6] => multiplexer2to1_8bit:mu2.y[6]
+x[7] => multiplexer2to1_8bit:mu2.y[7]
+selettore[0] => multiplexer2to1_8bit:mu1.s
+selettore[0] => multiplexer2to1_8bit:mu2.s
+selettore[1] => multiplexer2to1_8bit:mu3.s
+selettore[2] => ~NO_FANOUT~
+f[0] <= multiplexer2to1_8bit:mu3.m[0]
+f[1] <= multiplexer2to1_8bit:mu3.m[1]
+f[2] <= multiplexer2to1_8bit:mu3.m[2]
+f[3] <= multiplexer2to1_8bit:mu3.m[3]
+f[4] <= multiplexer2to1_8bit:mu3.m[4]
+f[5] <= multiplexer2to1_8bit:mu3.m[5]
+f[6] <= multiplexer2to1_8bit:mu3.m[6]
+f[7] <= multiplexer2to1_8bit:mu3.m[7]
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu1
+x[0] => multiplexer2to1:G1:0:mux.x
+x[1] => multiplexer2to1:G1:1:mux.x
+x[2] => multiplexer2to1:G1:2:mux.x
+x[3] => multiplexer2to1:G1:3:mux.x
+x[4] => multiplexer2to1:G1:4:mux.x
+x[5] => multiplexer2to1:G1:5:mux.x
+x[6] => multiplexer2to1:G1:6:mux.x
+x[7] => multiplexer2to1:G1:7:mux.x
+y[0] => multiplexer2to1:G1:0:mux.y
+y[1] => multiplexer2to1:G1:1:mux.y
+y[2] => multiplexer2to1:G1:2:mux.y
+y[3] => multiplexer2to1:G1:3:mux.y
+y[4] => multiplexer2to1:G1:4:mux.y
+y[5] => multiplexer2to1:G1:5:mux.y
+y[6] => multiplexer2to1:G1:6:mux.y
+y[7] => multiplexer2to1:G1:7:mux.y
+s => multiplexer2to1:G1:0:mux.s
+s => multiplexer2to1:G1:1:mux.s
+s => multiplexer2to1:G1:2:mux.s
+s => multiplexer2to1:G1:3:mux.s
+s => multiplexer2to1:G1:4:mux.s
+s => multiplexer2to1:G1:5:mux.s
+s => multiplexer2to1:G1:6:mux.s
+s => multiplexer2to1:G1:7:mux.s
+m[0] <= multiplexer2to1:G1:0:mux.m
+m[1] <= multiplexer2to1:G1:1:mux.m
+m[2] <= multiplexer2to1:G1:2:mux.m
+m[3] <= multiplexer2to1:G1:3:mux.m
+m[4] <= multiplexer2to1:G1:4:mux.m
+m[5] <= multiplexer2to1:G1:5:mux.m
+m[6] <= multiplexer2to1:G1:6:mux.m
+m[7] <= multiplexer2to1:G1:7:mux.m
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu1|multiplexer2to1:\G1:0:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu1|multiplexer2to1:\G1:1:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu1|multiplexer2to1:\G1:2:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu1|multiplexer2to1:\G1:3:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu1|multiplexer2to1:\G1:4:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu1|multiplexer2to1:\G1:5:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu1|multiplexer2to1:\G1:6:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu1|multiplexer2to1:\G1:7:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu2
+x[0] => multiplexer2to1:G1:0:mux.x
+x[1] => multiplexer2to1:G1:1:mux.x
+x[2] => multiplexer2to1:G1:2:mux.x
+x[3] => multiplexer2to1:G1:3:mux.x
+x[4] => multiplexer2to1:G1:4:mux.x
+x[5] => multiplexer2to1:G1:5:mux.x
+x[6] => multiplexer2to1:G1:6:mux.x
+x[7] => multiplexer2to1:G1:7:mux.x
+y[0] => multiplexer2to1:G1:0:mux.y
+y[1] => multiplexer2to1:G1:1:mux.y
+y[2] => multiplexer2to1:G1:2:mux.y
+y[3] => multiplexer2to1:G1:3:mux.y
+y[4] => multiplexer2to1:G1:4:mux.y
+y[5] => multiplexer2to1:G1:5:mux.y
+y[6] => multiplexer2to1:G1:6:mux.y
+y[7] => multiplexer2to1:G1:7:mux.y
+s => multiplexer2to1:G1:0:mux.s
+s => multiplexer2to1:G1:1:mux.s
+s => multiplexer2to1:G1:2:mux.s
+s => multiplexer2to1:G1:3:mux.s
+s => multiplexer2to1:G1:4:mux.s
+s => multiplexer2to1:G1:5:mux.s
+s => multiplexer2to1:G1:6:mux.s
+s => multiplexer2to1:G1:7:mux.s
+m[0] <= multiplexer2to1:G1:0:mux.m
+m[1] <= multiplexer2to1:G1:1:mux.m
+m[2] <= multiplexer2to1:G1:2:mux.m
+m[3] <= multiplexer2to1:G1:3:mux.m
+m[4] <= multiplexer2to1:G1:4:mux.m
+m[5] <= multiplexer2to1:G1:5:mux.m
+m[6] <= multiplexer2to1:G1:6:mux.m
+m[7] <= multiplexer2to1:G1:7:mux.m
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu2|multiplexer2to1:\G1:0:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu2|multiplexer2to1:\G1:1:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu2|multiplexer2to1:\G1:2:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu2|multiplexer2to1:\G1:3:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu2|multiplexer2to1:\G1:4:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu2|multiplexer2to1:\G1:5:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu2|multiplexer2to1:\G1:6:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu2|multiplexer2to1:\G1:7:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu3
+x[0] => multiplexer2to1:G1:0:mux.x
+x[1] => multiplexer2to1:G1:1:mux.x
+x[2] => multiplexer2to1:G1:2:mux.x
+x[3] => multiplexer2to1:G1:3:mux.x
+x[4] => multiplexer2to1:G1:4:mux.x
+x[5] => multiplexer2to1:G1:5:mux.x
+x[6] => multiplexer2to1:G1:6:mux.x
+x[7] => multiplexer2to1:G1:7:mux.x
+y[0] => multiplexer2to1:G1:0:mux.y
+y[1] => multiplexer2to1:G1:1:mux.y
+y[2] => multiplexer2to1:G1:2:mux.y
+y[3] => multiplexer2to1:G1:3:mux.y
+y[4] => multiplexer2to1:G1:4:mux.y
+y[5] => multiplexer2to1:G1:5:mux.y
+y[6] => multiplexer2to1:G1:6:mux.y
+y[7] => multiplexer2to1:G1:7:mux.y
+s => multiplexer2to1:G1:0:mux.s
+s => multiplexer2to1:G1:1:mux.s
+s => multiplexer2to1:G1:2:mux.s
+s => multiplexer2to1:G1:3:mux.s
+s => multiplexer2to1:G1:4:mux.s
+s => multiplexer2to1:G1:5:mux.s
+s => multiplexer2to1:G1:6:mux.s
+s => multiplexer2to1:G1:7:mux.s
+m[0] <= multiplexer2to1:G1:0:mux.m
+m[1] <= multiplexer2to1:G1:1:mux.m
+m[2] <= multiplexer2to1:G1:2:mux.m
+m[3] <= multiplexer2to1:G1:3:mux.m
+m[4] <= multiplexer2to1:G1:4:mux.m
+m[5] <= multiplexer2to1:G1:5:mux.m
+m[6] <= multiplexer2to1:G1:6:mux.m
+m[7] <= multiplexer2to1:G1:7:mux.m
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:0:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:1:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:2:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:3:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:4:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:5:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:6:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|multiplexer4to1_8bit|multiplexer2to1_8bit:mu3|multiplexer2to1:\G1:7:mux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,65 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+
+ENTITY register_file IS
+
+	PORT( data_in : IN STD_LOGIC_VECTOR(7 downto 0);
+			address : IN STD_LOGIC_VECTOR(9 downto 0);
+			cs, wr_n, rd, clock : IN STD_LOGIC;
+			data_out : OUT STD_LOGIC_VECTOR(7 downto 0));
+			
+END register_file;
+
+ARCHITECTURE behavior OF register_file IS
+
+	TYPE register_type IS ARRAY(0 to 1023) OF STD_LOGIC_VECTOR(7 DOWNTO 0); -- definisco la dimensione della memoria
+	
+	SIGNAL reg_file : register_type; -- istanzio un segnale di memoria
+	
+	BEGIN
+	
+	
+	write_reg : PROCESS(clock)		-- processo per la scrittura sincrona
+	
+		BEGIN
+		
+			IF (clock'EVENT AND clock = '1') THEN
+			
+				IF (cs = '1') THEN
+				
+					IF (wr_n = '0') THEN
+					
+						reg_file(TO_INTEGER(UNSIGNED(address))) <= data_in;
+						
+				   END IF;
+			  END IF;
+			END IF;
+	END PROCESS write_reg;
+	
+ -- processo per la lettura asincrona
+		
+	 	read_reg : PROCESS(rd,address)		-- processo per la lettura asincrona
+	
+		BEGIN
+		
+			IF (cs = '1') THEN
+			
+				IF (rd = '1') THEN
+			
+				data_out <= reg_file(TO_INTEGER(UNSIGNED(address)));
+				ELSE 
+				data_out <= "UUUUUUUU";
+				
+				END IF;
+			ELSE 
+				data_out <= "UUUUUUUU"; 	
+ 			
+			END IF;
+	
+	END PROCESS read_reg;
+	
+	
+		
+END behavior;
+																																																
