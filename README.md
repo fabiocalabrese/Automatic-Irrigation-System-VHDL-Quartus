@@ -55,3 +55,10 @@ The digital system acts as a **controller for automatic irrigation**, processing
 - ✅ Testbenches for all components and top-level
 - ✅ ModelSim simulation results (waveforms & outputs)
 - ✅ Final PDF report with design explanation and results
+
+## Authors
+
+- **Fabio Calabrese** – [@fabiocalabrese](https://github.com/fabiocalabrese)  
+  *fabiocalabrese88@gmail.com*/*s343467@studenti.polito.it*  
+- **Marc Helou** – [@marcuji](https://github.com/marcuji)  
+  *marc.helou@studenti.polito.it*
